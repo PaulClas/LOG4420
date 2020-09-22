@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Implémentation d'onglets avec boutons radio</title>
+  <link rel="stylesheet" href="style2.css">
+	
+<body>
+	
+  <h1>Implémentation d'onglets avec boutons radio</h1>
+		
+  <div class="tabs">
+    <div class="tab">
+      <input type="radio" id="tab-1" name="tab-group-1" checked>
+      <label for="tab-1">Premier quatrain</label>
+      
+      <div class="content">
+        <p>
+	    C'est un trou de verdure, où chante une rivière <br>
+	    Accrochant follement aux herbes des haillons <br>
+	    D'argent; où le soleil, de la montagne fière, <br>
+	    Luit: c'est un petit val qui mousse de rayons.
+	</p>
+      </div> 
+    </div>
+    
+    <div class="tab">
+      <input type="radio" id="tab-2" name="tab-group-1">
+      <label for="tab-2">Deuxième quatrain</label>
+      
+      <div class="content">
+        <p>
+	    Un soldat jeune, bouche ouverte, tête nue, <br>
+	    Et la nuque baignant dans le frais cresson bleu, <br> 
+	    Dort; il est étendu dans l'herbe, sous la nue, <br>
+	    Pâle dans son lit vert ou la lumière pleut. 
+	</p>
+      </div> 
+    </div>
+        
+    <div class="tab">
+      <input type="radio" id="tab-3" name="tab-group-1">
+      <label for="tab-3">Premier tercet</label>
+      
+      <div class="content">
+        <p>
+	  Les pieds dans les glaïeuls, il dort. Souriant comme <br>
+	  Sourirait un enfant malade, il fait un somme: <br>
+	  Nature, berce-le chaudement: il a froid. 
+	</p>
+      </div> 
+    </div>
+
+    <div class="tab">
+      <input type="radio" id="tab-4" name="tab-group-1">
+      <label for="tab-4">Dernier tercet</label>
+      
+      <div class="content">
+        <p>
+	    Les parfums ne font pas frissonner sa narine. <br>
+	    Il dort dans le soleil, la main sur sa poitrine <br>
+	    Tranquille. Il a deux trous rouges au côté droit. 
+	</p>
+      </div> 
+    </div>
+
+        
+  </div>
+    
+
+	
+
+</body>
+
+</html>

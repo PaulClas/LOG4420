@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Exemple de positionnement</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body id="home">
+
+	<h1>Positionnement</h1>
+
+	<h2> Positionnement fixe</h2>
+	<div id="div0">
+	  <img src="Tomas2.gif">
+          <p> L'objet apparaît en haut à droite</p>
+	</div>
+
+	<h2>Positionnement en ligne</h2>
+	<div id="div2">
+	    <div>A</div>
+	    <div>B</div>
+	    <div>C</div>
+	    <div>D</div>
+	    <div>E</div>
+	    <div>F</div>
+	    <span>
+	      <div>G</div>
+	      allo
+	      <div>H</div>
+	      <div>I</div>
+	      <div>J</div>
+	      <div>K</div>
+	      <div>L</div>
+	    </span>
+        </div>
+
+
+	<h2>Positionnement en ligne + relatif</h2>
+	<div id="div1">
+	  <article>
+	    <div><p>Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.</p></div>
+	    <div class="pos-rel-1"><p><strong>Bloc déplacé</strong></p></div>
+	    <div><p>Toto</p>  </div>
+	  </article>
+        </div>
+
+
+	<h2>Positionnement en bloc + relatif</h2>
+	<div id="div3">
+	    <div>
+	    </div>
+	    <div class="pos-rel-2">
+	      Bloc déplacé
+	    </div>
+	    <div>
+	    </div>
+        </div>
+
+	<h2>Positionnement flottant</h2>
+	<div id="div4">
+
+	    <div>Bloc flottant </div>
+	    <p>
+Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.
+Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.
+Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.
+Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.
+Bonjour! Je suis un texte insignifiant qui ne sert qu'à remplir une boîte.
+	    </p>
+	    <div class="special clear"></div>
+        </div>
+
+	<h2> Positionnement absolu</h2>
+	<div id="div5">
+
+	    <div>Premier bloc placé</div>
+	    <div id="div5a">Position absolue</div>
+	    <div id="div5b">Position absolue</div>
+
+	    <div>Bloc dans le flux normal, placé à la suite du premier bloc</div>
+        </div>
+
+
+	<h2> Utilisation de la propriété z-index</h2>
+	<div id="div6">
+	  <div id="div6a"></div>
+	  <div id="div6b"></div>
+	  <div id="div6c"></div>
+	  <div id="div6d"></div>
+	  <div id="div6e"></div>
+	  <div id="div6f"></div>
+	  <div id="div6g"></div>
+	  <div id="div6h"></div>
+	  <div id="div6i"></div>
+
+	</div>
+</body>
+</html>

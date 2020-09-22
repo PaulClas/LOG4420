@@ -1,0 +1,238 @@
+/*------------------------------------*\
+  RESET
+\*------------------------------------*/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0b1 | 201101
+   NOTE:WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+
+html,body,div,span,applet,object,iframe,
+p,blockquote,pre,
+a,abbr,acronym,address,big,cite,code,
+del,dfn,em,img,ins,kbd,q,s,samp,
+small,strike,strong,sub,sup,tt,var,
+b,u,i,center,
+dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary,
+time,mark,audio,video{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  font:inherit;
+
+}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section{
+  display:block;
+}
+
+h2 {
+    margin-left: 15px;
+}
+
+body {
+    width: 90%;
+}
+
+div {
+    position: relative;
+    border: solid 2px;
+    color: red;
+    margin: 20px 20px;
+}
+
+div div {
+    width: 100px;
+    height: 100px;
+}
+
+
+#div0 {
+    border: 0px;
+
+}
+
+#div0 img {
+    position: fixed;
+    width: 100px;
+    right: 10%
+}
+
+#div1 div {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
+    border: solid 2px;
+    color: blue;
+    vertical-align: top;
+    margin: 10px auto;
+}
+
+#div2 div {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border: solid 2px;
+    color: blue;
+    margin: 10px auto;
+}
+
+
+#div2 span {
+    border: dashed black 1px;
+    vertical-align: top;
+    padding-bottom: 44px;
+    
+
+}
+
+
+#div3 div {
+    height: 100px;
+    width: 100px;
+    border: solid 2px;
+    color: green;
+    margin: 50px auto;
+}
+
+#div4 {
+    width: 35%;
+    height: 250px;
+}
+
+
+#div4 div {
+    margin: 5px;
+    float: left;
+    height: 100px;
+    width: 100px;
+    border: solid 2px;
+    color: green;
+}
+
+
+
+#div4 .special {
+    width: 20px;
+    height: 20px;
+}
+
+
+#div5 {
+    height: 300px;
+}
+
+#div5 #div5a {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 100px;
+    height: 100px;
+}
+
+#div5 #div5b {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 100px;
+    height: 100px;
+}
+
+#div6 {
+    height: 200px;
+    width: 650px;
+    background: white;
+    position: relative;
+}
+
+
+#div6:hover {
+    z-index: -10;
+}
+
+#div6 #div6a {
+    position: absolute;
+    background-color: #222;
+}
+
+#div6 #div6b {
+    position: absolute;
+    left: 40px;
+    top: 50px;
+    background-color: #666;
+}
+
+#div6 #div6c {
+    position: absolute;
+    top: 20px;
+    left: 80px;
+    background-color: #999;
+}
+
+#div6 #div6d {
+    position: absolute;
+    background-color: #222;
+    left: 200px;
+}
+
+#div6 #div6e {
+    position: absolute;
+    left: 240px;
+    top: 50px;
+    background-color: #666;
+    z-index: 1;
+}
+
+#div6 #div6f {
+    position: absolute;
+    left: 280px;
+    top: 20px;
+    background-color: #999;
+}
+
+#div6 #div6g {
+    left: 400px;
+    position: absolute;
+    background-color: #222;
+}
+
+#div6 #div6h {
+    position: absolute;
+    left: 440px;
+    top: 50px;
+    background-color: #666;
+    z-index: -1;
+}
+
+#div6 #div6i {
+    position: absolute;
+    left: 480px;
+    top: 20px;
+    background-color: #999;
+}
+
+
+.pos-rel-1 {
+    position: relative;
+    left: 450px;
+}
+
+.pos-rel-2 {
+    position: relative;
+    left: 150px;
+}
+
+div div:hover {
+    background-color: yellow;
+}
+
+
+.clear {
+    clear: both;
+}

@@ -1,0 +1,75 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    margin: 0 10%; 
+}
+
+h1 { 
+    font: 36px Georgia, Serif; 
+    margin: 20px 0; }
+    
+p {
+    margin-bottom: 5px;
+}
+        
+.main { 
+    min-height: 250px; 
+    position: relative; 
+    width: 100%; 
+}
+
+
+.tab {
+    position: relative;
+    color: black;
+    top: 1px;
+    text-decoration: none; 
+    background: #ccc; 
+    display: block; 
+    float: left; 
+    padding: 5px 10px; 
+    border: 1px solid #ccc; 
+    border-bottom: 1px solid white; 
+}
+
+
+
+.main > .section:target > .tab { 
+    background: white; 
+}	
+
+
+
+.main > div > div { 
+    position: absolute;
+    background: white; 
+    z-index: -2; 
+    left: 0; 
+    top: 30px; 
+    bottom: 0; 
+    right: 0; 
+    padding: 20px; 
+    border: 1px solid #ccc;
+ }	
+       
+
+/*
+   Lors du chargement de la page, on veut que le premier
+   onglet soit selectionné.
+*/
+.main .first div {
+    z-index: -1;
+}
+
+
+
+/*
+   Le contenu de l'ongle sélecionné est placé en avant des
+   autres
+*/
+.main > .section:target > div {
+    z-index: -1;
+ }
