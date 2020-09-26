@@ -1,9 +1,11 @@
+/* general stuff*/
 body{
     max-width: 1200px;
     padding-left: 20px;
     padding-right: 20px;
     font-family: arial;
     color: black;
+    padding: 10px;
 }
 header{
     max-height: 60px;
@@ -11,8 +13,13 @@ header{
     padding-right: 20px;
 }
 footer{
-    max-height: 70px;
+    height: 70px;
+    position: fixed;
+    left: 0;
+    bottom: 70px;
+    width: 100%;
 }
+/* homepage*/
 #homepage_img{
     float: right;
     width: 50%;
@@ -37,4 +44,14 @@ footer{
 }
 #index_important_text {
     font-weight: bold;
+}
+/* products */
+#lateral_bar{
+    width: 25%;
+    float:left;
+    padding: 10px;
+}
+#main_panel{
+    width:75%;
+    float: right;
 }
