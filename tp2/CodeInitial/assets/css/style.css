@@ -76,6 +76,10 @@ footer{
   align-content: space-between;
     
 }
+.product_price {
+    padding: 5px;
+    text-align: right;
+}
 #productslist article {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -88,7 +92,7 @@ footer{
 #lateral_bar button:not(.selected) {
     background-color: white;
 }
-#lateral_bar button:hover, #productslist article :hover {
+#lateral_bar button:hover, #productslist :hover {
     background-color: #f3f3f3;
     transition-timing-function: ease-out;
     transition: background-color 0.2s;
