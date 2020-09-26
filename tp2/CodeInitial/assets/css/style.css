@@ -1,6 +1,6 @@
 /* general stuff*/
 body{
-    max-width: 1200px;
+    width: 1200px;
     padding-left: 20px;
     padding-right: 20px;
     font-family: arial;
@@ -27,13 +27,12 @@ footer{
 }
 .btn {
     background-color: #14597f;
-    border: #0b2d3d;
-    border-style: solid;
-    border-width: 1px;
+    border: #0b2d3d 1px solid;
     border-radius: 4px;
     text-decoration: solid;
     color: white;
     padding: 10px;
+    cursor: pointer;
 
 }
 .btn:hover {
@@ -49,9 +48,33 @@ footer{
 #lateral_bar{
     width: 25%;
     float:left;
-    padding: 10px;
+    box-sizing: border-box;
+    padding: 15px;
 }
 #main_panel{
     width:75%;
+    box-sizing: border-box;
     float: right;
+}
+#lateral_bar button {
+    border: 1px solid #999999;
+    border-radius: 4px;
+    text-align: left;
+    cursor: pointer;
+    padding: 18px 10px 18px 10px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    display: block;
+}
+#lateral_bar button:hover {
+    background-color: #f3f3f3;
+    transition-timing-function: ease-out;
+    transition: background-color 0.2s;
+}
+#lateral_bar button:not(:last-child) {
+    border-bottom: none;
+  }
+.selected {
+    background-color: #ddf2fb;
 }
