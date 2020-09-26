@@ -64,25 +64,21 @@ footer{
     width: 100%;
     display: block;
 }
-#lateral_bar button, #productslist article {
+#lateral_bar button, #productslist article, .form-control {
     border: 1px solid #999999;
     border-radius: 4px;
 }
 #productslist{
     clear: both;
     display: grid;
-    grid-template-columns: 30% 30% 30%;
+    grid-template-columns: auto auto auto;
     justify-content: space-between;
   align-content: space-between;
     
 }
-.product_price {
-    padding: 5px;
-    text-align: right;
-}
+
 #productslist article {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 #productslist article img {
@@ -112,4 +108,34 @@ footer{
 #page_title {
     float: left;
 }
+.product_price {
+    padding: 5px;
+    text-align: right;
+}
 
+/*page d'un produit*/
+.table {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-count: 2;
+}
+
+.product_img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+#form_quantity {
+    justify-self: end;
+}
+#price{
+    margin: 10px;
+}
+#product_info{
+    grid-column: 2;
+}
+#dotted_line {
+    border:none;
+    border-top:1px dotted #999999;
+    height:1px;
+}
