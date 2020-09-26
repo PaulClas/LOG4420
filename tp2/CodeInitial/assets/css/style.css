@@ -55,7 +55,6 @@ footer{
 }
 #main_panel{
     width:75%;
-    box-sizing: border-box;
     float: right;
 }
 #lateral_bar button {
@@ -81,4 +80,14 @@ footer{
   }
 .selected {
     background-color: #ddf2fb;
+}
+/*panneau central*/
+#num_products {
+    float: right;
+    box-sizing: border-box;
+    
+}
+#page_title {
+    float: left;
+    box-sizing: border-box;
 }
