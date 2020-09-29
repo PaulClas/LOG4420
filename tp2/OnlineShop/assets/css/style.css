@@ -31,7 +31,7 @@ footer{
     max-height: 70px;
 }
 
-nav{
+.header_nav{
     max-width: 1200px;
     justify-content: right;
     display: flex;
@@ -40,7 +40,7 @@ nav{
     float: right;
 }
 
-nav a{
+.header_nav a{
     display: block;
     color: white;
     text-decoration: none;
@@ -48,7 +48,7 @@ nav a{
     margin: 0px 2px;
 }
 
-nav a.active {
+.header_nav a.active {
     background-color: #1fb5e9;
     border-radius: 4px;
 }
