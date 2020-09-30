@@ -1,5 +1,5 @@
 body{
-    margin:0px;
+    margin:0;
     font-family: Arial, sans-serif;
 }
 
@@ -7,9 +7,8 @@ main{
     max-width: 1200px;
     padding-left: 20px;
     padding-right: 20px;
-    font-style: arial, sans-serif;
     color: black;
-    margin: 30px auto 0px auto;
+    margin: 30px auto 0 auto;
     min-height: calc(100vh - 162px);
 }
 header{
@@ -29,7 +28,6 @@ header > div {
 
 .header_nav{
     max-width: 1200px;
-    justify-content: right;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,7 +39,7 @@ header > div {
     color: white;
     text-decoration: none;
     padding: 10px;
-    margin: 0px 2px;
+    margin: 0 2px;
 }
 
 .header_nav a.active {
@@ -67,7 +65,7 @@ header > div {
 }
   
 .shopping-cart {
-    padding: 0px 10px;
+    padding: 0 10px;
 }
   
 .count {
@@ -114,9 +112,7 @@ footer > div {
 }
 .btn {
     background-color: #14597f;
-    border: #0b2d3d;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid #0b2d3d;
     border-radius: 4px;
     text-decoration: solid;
     color: white;
@@ -249,7 +245,6 @@ footer > div {
     display: grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
     margin: 30px 5px;
-    padding: 30px 0px 10px 0px;
     border: 1px solid  #999999;
     border-radius: 4px;
     padding: 5px;
@@ -269,7 +264,7 @@ footer > div {
     text-align: center;
     display: block;
     text-decoration: none;
-    margin: 10px 0px;
+    margin: 10px 0;
 }
   
 .contact-grid p{
@@ -289,7 +284,6 @@ footer > div {
 
 /*Page Shopping Cart Panier*/
 .cart-table{
-    -width:100%;
     text-align: left;
     display:flex;
     flex-direction: column;
@@ -323,7 +317,7 @@ footer > div {
     border-style: none;
     background-color: #dddddd;
     align-items: center;
-    padding: 1px 0px 0px 0px;
+    padding: 1px 0 0 0;
 }
 
 .cart-table-row button:hover{
@@ -340,17 +334,17 @@ footer > div {
     color:#14597f;
 }
 .select{
-    margin:0px -10px;
+    margin:0 -10px;
 }
 
 .select button{
-    margin:0px 10px;
+    margin:0 10px;
 }
 
 #sum{
     text-align: end;
     padding-top: 16px;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .order-buttons {
@@ -381,12 +375,12 @@ footer > div {
 }
   
 .order-grid-row1 {
-    margin: 24px 0px 8px;
+    margin: 24px 0 8px;
 }
   
 .order-grid-row2 {
     grid-row: 2;
-    margin: 16px 0px 4px;
+    margin: 16px 0 4px;
 }
 
 .order-grid-row3 {
@@ -395,7 +389,7 @@ footer > div {
   
 .order-grid-row4 {
     grid-row: 4;
-    margin: 16px 0px 4px;
+    margin: 16px 0 4px;
 }
   
 .order-grid-row5 {
@@ -406,10 +400,6 @@ footer > div {
     border: 1px solid  #999999;
     border-radius: 4px;
     padding: 10px 10px;
-}
-
-.order-grid placeholder{
-    margin: 0px 10px 0px 0px;
 }
 
 #order-form .btn{
