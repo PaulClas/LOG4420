@@ -7,7 +7,7 @@ main{
     max-width: 1200px;
     padding-left: 20px;
     padding-right: 20px;
-    font-style: arial;
+    font-style: arial, sans-serif;
     color: black;
     margin: 30px auto 0px auto;
     min-height: calc(100vh - 162px);
@@ -178,13 +178,7 @@ footer > div {
     align-content: space-between;
     
 }
-#productslist article {
-    margin: 15px;
-}
-#productslist article img {
-    max-width: 100%;
-    max-height: 100%;
-}
+
 #lateral_bar button:not(.selected) {
     background-color: white;
 }
@@ -200,6 +194,17 @@ footer > div {
     background-color: #ddf2fb;
 }
 /*panneau central*/
+#productslist article {
+    margin: 15px;
+}
+#productslist article img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#productslist article * {
+    text-decoration: none;
+    color: black;   
+}
 #num_products {
     float: right;
     box-sizing: border-box;
@@ -213,6 +218,7 @@ footer > div {
     text-align: right;
 }
 /*page d'un produit*/
+
 .table {
     display: grid;
     grid-template-columns: auto auto;
