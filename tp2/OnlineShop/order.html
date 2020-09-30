@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>OnlineShop - Commande</title>
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -27,27 +27,34 @@
     </div>
   </header>
   <main>
-    <h2>Commande</h2>
-    <form action="confirmation.html">
-      <div id=contact>
-        <h4>Contact</h4>
-        <label for="prenom">Prénom</label><br>
-        <input type="text" id="prenom" name="prenom" required><br>
-        <label for="nom">Nom</label><br>
-        <input type="text" id="nom" name="nom" required><br>
-        <label for="email">Adresse courriel</label><br>
-        <input type="email" id="email" name="email" placeholder="name@host.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br>
-        <label for="phone">Numéro de téléphone</label><br>
-        <input type="tel" id="phone" name="phone" placeholder="123-123-1234" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-          required><br>
-      </div>
-      <div id=paiement>
-        <h4>Paiement</h4>
-        <label for="creditcard">Numéro de carte de crédit</label><br>
-        <input type="text" id="creditcard" name="creditcard" placeholder="1111-2222-3333-4444" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" required><br>
-        <label for="creditcardexpiry">Date d'expiration de la carte</label><br>
-        <input type="text" id="creditcardexpiry" name="creditcardexpiry" placeholder="01/2021" pattern="[0-9]{2}/[0-9]{4}" required><br>
-      </div>
+    <h1>Commande</h1>
+    <form id="order-form" action="confirmation.html" method="post">
+      <section class="order-grid">
+          <h2 class="order-grid-col1 order-grid-row1">Contact</h2>
+          <label class="order-grid-col1 order-grid-row2" for="prenom">Prénom</label>
+          <input class="form-box order-grid-col1 order-grid-row3" type="text" id="prenom" name="prenom" placeholder="Prénom" required>
+
+          <label class="order-grid-col2 order-grid-row2" for="nom">Nom</label>
+          <input class="form-box order-grid-col2 order-grid-row3" type="text" id="nom" name="nom" placeholder="Nom" required>
+
+          <label class="order-grid-col1 order-grid-row4" for="email">Adresse courriel</label>
+          <input class="form-box order-grid-col1 order-grid-row5" type="email" id="email" name="email" placeholder="Adresse courriel"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+
+          <label class="order-grid-col2 order-grid-row4" for="phone">Numéro de téléphone</label>
+          <input class="form-box order-grid-col2 order-grid-row5" type="tel" id="phone" name="phone" placeholder="###-###-####" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            required>
+        </section>
+        <section class="order-grid">
+          <h2 class="order-grid-col1 order-grid-row1" >Paiement</h2>
+          <label class="order-grid-col1 order-grid-row2" for="creditcard">Numéro de carte de crédit</label>
+          <input class="form-box order-grid-col1 order-grid-row3" type="text" id="creditcard" name="creditcard" placeholder="•••• •••• •••• ••••"
+            pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" required>
+
+          <label class="order-grid-col2 order-grid-row2" for="creditcardexpiry">Date d'expiration de la carte</label>
+          <input class="form-box order-grid-col2 order-grid-row3" type="text" id="creditcardexpiry" name="creditcardexpiry" placeholder="mm/aa"
+            pattern="[0-9]{2}/[0-9]{4}" required>
+        </section>
       <input type="submit" value="Payer" class="btn">
     </form>
   </main>

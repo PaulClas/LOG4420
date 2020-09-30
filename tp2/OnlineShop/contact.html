@@ -5,17 +5,17 @@
   <meta charset="UTF-8">
   <title>OnlineShop - Contact</title>
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
 
 <body>
   <header>
     <div>
       <a href="index.html"><img id="logo" src="assets/img/logo.svg" alt="logo"></a>
-      <nav>
+      <nav class="header_nav">
         <a href="index.html">Accueil</a>
         <a href="products.html">Produits</a>
-        <a href="contact.html" class="active">Contact</a>
+        <a class="active" href="contact.html">Contact</a>
         <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
           <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
@@ -27,14 +27,28 @@
     </div>
   </header>
   <main>
-    <h2>Page de contact</h2>
-    <address>
-      <a href="mailto: abc@gmail.com">Envoyez-nous un courriel</a><br><br>
-      <a href="tel:1-514-456-7890">1-514-456-7890 (appelez nous !)</a><br><br>
-      OnlineShop<br>
-      123 Sesame Rue<br>
-      Montreal, QC, a1b 2c3<br>
-    </address>
+    <h1>Contact</h1>
+    <p>Si vous souhaitez contacter <b><em>OnlineShop</em></b>, veuillez utiliser les coordonnées suivantes.</p>
+    <article class="contact-grid">
+      <section class="contact-card">
+        <i class="fas fa-mobile-alt"></i>
+        <a href="tel:5143404711">(514) 340-4711</a>
+      </section>
+      <section>
+        <i class="fas fa-map-marker-alt"></i>
+        <address>
+          <p>
+            2900, boul. Édouard-Montpetit<br>
+            Montréal (Québec)<br>
+            H3T 1J4
+          </p>
+        </address>
+      </section>
+      <section class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <a href="mailto:onlineshop@polymtl.ca">onlineshop@polymtl.ca</a>
+      </section>
+    </article>
   </main>
   <footer>
     <div>

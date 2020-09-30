@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>OnlineShop - Panier</title>
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-<link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 </head>
+
 <body>
   <header>
     <div>
@@ -14,10 +16,10 @@
         <a href="index.html">Accueil</a>
         <a href="products.html">Produits</a>
         <a href="contact.html">Contact</a>
-        <a class="shopping-cart" href="./shopping-cart.html" title="Panier" class="active" >
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier" class="active">
           <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
-            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+            <i class="fa fa-circle fa-stack-2x fa-inverse active"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x active"></i>
           </span>
           <span class="count">3</span>
         </a>
@@ -25,40 +27,42 @@
     </div>
   </header>
   <main>
-    <h2>Panier</h2>
-    <table>
-      <tr>
+    <h1>Panier</h1>
+    <table class="cart-table">
+      <tr class="cart-table-header">
         <th></th>
-        <th>Nom</th>
+        <th>Produit</th>
         <th>Prix unitaire</th>
         <th>Quantité</th>
-        <th>Prix</th>
+        <th id="price-column">Prix</th>
       </tr>
-      <tr>
-        <td><button>X</button></td>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
         <td><a href="product.html">Apple TV</a></td>
         <td>249.99 $</td>
-        <td><button>-</button>1<button>+</button></td>
-        <td>249.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td id="price-column">249.99 $</td>
       </tr>
-      <tr>
-        <td><button>X</button></td>
-        <td><a href="product.html">Canon EOS 5D Mark II</a></td>
-        <td>2999.99 $</td>
-        <td><button>-</button>2<button>+</button></td>
-        <td>5999.98 $</td>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
+        <td><a href="product.html">Console Wii</a></td>
+        <td>199.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td id="price-column">199.99 $</td>
       </tr>
-      <tr>
-        <td><button>X</button></td>
-        <td><a href="product.html">Nikon D7000</a></td>
-        <td>549.99 $</td>
-        <td><button>-</button>2<button>+</button></td>
-        <td>1099.98 $</td>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
+        <td><a href="product.html">Moniteur 19"</a></td>
+        <td>149.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td id="price-column">149.99 $</td>
       </tr>
     </table>
-    <h4>Total: 7349.95 $</h4>
-    <button>Vider le panier</button>
-    <a href="order.html">Commander</a>
+    <p id="sum">Total: <strong>599,97&thinsp;$</strong></p>
+    <div class="order-buttons">
+      <button class="btn"><i class="fa fa-trash" aria-hidden="true"></i> Vider le panier</button>
+      <a class="btn order-btn" href="./order.html">Commander <span>&#187;</a>
+    </div>
   </main>
   <footer>
     <div>
@@ -66,4 +70,5 @@
     </div>
   </footer>
 </body>
+
 </html>
