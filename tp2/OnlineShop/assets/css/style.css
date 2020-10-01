@@ -10,6 +10,7 @@ main{
     color: black;
     margin: 30px auto 30px auto;
     min-height: calc(100vh - 190px);
+    clear: both;
 }
 header{
     height: 60px;
@@ -99,6 +100,7 @@ footer{
     justify-content: center;
     align-items: center;
     margin:0px;
+    clear: both;
 }
 
 footer > div {
@@ -139,6 +141,7 @@ footer > div {
 #main_panel{
     width:75%;
     float: right;
+    margin-bottom: 30px;
 }
 
 #categories h4{
@@ -255,6 +258,15 @@ footer > div {
     border:none;
     border-top:1px dotted #999999;
     height:1px;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+   opacity: 1;
+}
+
+#quantity{
+    width: 40px;
+    height: 30px;
 }
 
 /*page d'un contact*/
