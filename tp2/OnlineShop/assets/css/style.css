@@ -214,7 +214,7 @@ footer > div {
 #num_products {
     float: right;
     box-sizing: border-box;
-    
+
 }
 #page_title {
     float: left;
@@ -328,7 +328,7 @@ input[type=number]::-webkit-outer-spin-button {
     grid-template-columns: 30px 24.375% 24.375% 24.375% 24.375%
 }
 
-#price-column{
+.price-column{
     text-align: right;
 }
 
