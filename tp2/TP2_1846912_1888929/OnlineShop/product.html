@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Produit</title>
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="index.html"><img id="logo" src="assets/img/logo.svg" alt="logo"></a>
+      <nav class="header_nav">
+        <a  href="index.html">Accueil</a>
+        <a href="products.html" class="active">Produits</a>
+        <a href="contact.html">Contact</a>
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+          </span>
+          <span class="count">3</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Canon EOS 5D Mark II</h1>
+    <div class="table">
+      <figure id="product_img"><img src="assets/img/camera-1.png"></figure>
+      <div class="product_info">
+        <h4>Description</h4>
+        <p>Le Canon EOS 5D Mark II est un appareil photographique reflex numérique à objectif interchangeable équipé
+          d'un
+          capteur 24×36 de 21 mégapixels, annoncé le 17 septembre 2008 et retiré du catalogue Canon japonais à la fin
+          décembre 2012 puis du catalogue français à la mi-mars 2013. Il permet, pour la première fois sur ce type
+          d'appareil, de filmer en vidéo HD 1080p (1920×1080 pixels). Canon a reçu, pour ce boîtier, le prix TIPA
+          (Technical
+          Image Press Association) du meilleur reflex « expert » en 2009. (<a
+            href='https://fr.wikipedia.org/wiki/Canon_EOS_5D_Mark_II' target='_blank'>Wikipédia</a>) </p>
+        <h4>Caracteristiques</h4>
+        <ul>
+          <li>Reflex numérique en alliage de magnésium à objectifs interchangeables de monture EF</li>
+          <li>Capteur CMOS avec matrice de Bayer (RVB) de 35,8 × 23,9 mm (format 24×36)</li>
+          <li>Processeur d'images DIGIC 4</li>
+          <li>21 millions de pixels. L'information de couleur est codée sur 14 bits</li>
+          <li>Ratio image 3:2</li>
+
+        </ul>
+        <hr id="dotted_line">
+        <div class="table">
+          <p id="price"><small>Prix: </small><strong>2999.99 $</strong></p>
+          <form action="#" id="form_quantity">
+            <label for="quantity">Quantité : </label>
+            <input class="form-control"  type="number" id="quantity" value="1" name="quantity" min="1" step="1" required size="300">
+            <input type="submit" value="Ajouter" class="btn" >
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <footer>
+    <div>
+      <p>Équipe 210 - Myriam Kiriakos 1888929 et Paul Clas 1846912</p>
+    </div>
+  </footer>
+</body>
+
+</html>

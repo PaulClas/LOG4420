@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Panier</title>
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="index.html"><img id="logo" src="assets/img/logo.svg" alt="logo"></a>
+      <nav class="header_nav">
+        <a href="index.html">Accueil</a>
+        <a href="products.html">Produits</a>
+        <a href="contact.html">Contact</a>
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse active"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x active"></i>
+          </span>
+          <span class="count">3</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <h1>Panier</h1>
+    <table class="cart-table">
+      <tr class="cart-table-header">
+        <th></th>
+        <th>Produit</th>
+        <th>Prix unitaire</th>
+        <th>Quantité</th>
+        <th class="price-column">Prix</th>
+      </tr>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
+        <td><a href="product.html">Apple TV</a></td>
+        <td>249.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td class="price-column">249.99 $</td>
+      </tr>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
+        <td><a href="product.html">Console Wii</a></td>
+        <td>199.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td class="price-column">199.99 $</td>
+      </tr>
+      <tr class="cart-table-row">
+        <td><button><i class="fas fa-times"></i></button></td>
+        <td><a href="product.html">Moniteur 19"</a></td>
+        <td>149.99 $</td>
+        <td class="select"><button><i class="fas fa-minus"></i></button> 1 <button><i class="fas fa-plus"></i></button></td>
+        <td class="price-column">149.99 $</td>
+      </tr>
+    </table>
+    <p id="sum">Total: <strong>599,97&thinsp;$</strong></p>
+    <div class="order-buttons">
+      <button class="btn"><i class="fa fa-trash" aria-hidden="true"></i> Vider le panier</button>
+      <a class="btn order-btn" href="./order.html">Commander <span>&#187;</span></a>
+    </div>
+  </main>
+  <footer>
+    <div>
+      <p>Équipe 210 - Myriam Kiriakos 1888929 et Paul Clas 1846912</p>
+    </div>
+  </footer>
+</body>
+
+</html>
