@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Produits</title>
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="index.html"><img id="logo" src="assets/img/logo.svg" alt="logo"></a>
+      <nav class="header_nav">
+        <a href="index.html">Accueil</a>
+        <a href="products.html" class="active">Produits</a>
+        <a href="contact.html">Contact</a>
+        <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+            <i class="fa fa-shopping-cart fa-stack-1x"></i>
+          </span>
+          <span class="count">3</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <aside id="lateral_bar">
+      <div id="categories">
+        <h4>Categories</h4>
+        <nav id="productcategories">
+          <button>Appareils photo</button>
+          <button>Consoles</button>
+          <button>Écrans</button>
+          <button>Ordinateurs</button>
+          <button class="selected">Tous les produits</button>
+        </nav>
+      </div>
+
+      <div id="classements">
+        <h4>Classements</h4>
+        <nav id="productcriteria">
+          <button class="selected">Prix (bas-haut)</button>
+          <button>Prix (haut-bas)</button>
+          <button>Nom (A-Z)</button>
+          <button>Nom (Z-A)</button>
+        </nav>
+      </div>
+    </aside>
+    <section id="main_panel">
+      <section id="product-listing-row">
+        <h2 id="page_title">Produits</h2>
+        <p id="num_products">6 produits</p>
+      </section>
+      <section id="productslist">
+        <article>
+          <a href="product.html">
+            <h4>Canon EOS 5D Mark II</h4>
+            <img src="assets/img/camera-1.png">
+            <p class="product_price"><small>Prix </small>2999.99 $</p>
+          </a>
+        </article>
+        <article>
+          <a href="product.html">
+            <h4>Nikon D7000</h4>
+            <img src="assets/img/camera-2.png">
+            <p class="product_price"><small>Prix </small>549.99 $</p>
+          </a>
+        </article>
+        <article>
+          <a href="product.html">
+            <h4>Canon PowerShot SD1300</h4>
+            <img src="assets/img/camera-3.png">
+            <p class="product_price"><small>Prix </small>299.99 $</p>
+          </a>
+        </article>
+        <article>
+          <a href="product.html">
+            <h4>Portable</h4>
+            <img src="assets/img/laptop-1.png">
+            <p class="product_price"><small>Prix </small>699.99 $</p>
+          </a>
+        </article>
+        <article>
+          <a href="product.html">
+            <h4>Portable professionnel</h4>
+            <img src="assets/img/laptop-2.png">
+            <p class="product_price"><small>Prix </small>599.99 $</p>
+          </a>
+        </article>
+        <article>
+          <a href="product.html">
+            <h4>iMac 27"</h4>
+            <img src="assets/img/mac.png">
+            <p class="product_price"><small>Prix </small>2299.99 $</p>
+          </a>
+        </article>
+      </section>
+    </section>
+  </main>
+</body>
+<footer>
+  <div>
+    <p>Équipe 210 - Myriam Kiriakos 1888929 et Paul Clas 1846912</p>
+  </div>
+</footer>
+
+</html>
