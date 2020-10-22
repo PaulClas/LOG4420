@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./assets/js/products.js"></script>
 </head>
 <body>
   <header>
@@ -38,69 +39,27 @@
       <section>
         <h2>Catégories</h2>
         <div class="btn-group vertical" id="product-categories">
-          <button>Appareils photo</button>
-          <button>Consoles</button>
-          <button>Écrans</button>
-          <button>Ordinateurs</button>
-          <button class="selected">Tous les produits</button>
+          <button data-category="cameras" onclick="showByCategories('cameras')">Appareils photo</button>
+          <button data-category="consoles" onclick="showByCategories('consoles')">Consoles</button>
+          <button data-category="screens" onclick="showByCategories('screens')">Écrans</button>
+          <button data-category="computers" onclick="showByCategories('computers')">Ordinateurs</button>
+          <button class="selected" onclick="showAll()">Tous les produits</button>
         </div>
       </section>
       <section>
         <h2>Classement</h2>
         <div class="btn-group vertical" id="product-criteria">
-          <button class="selected">Prix (bas-haut)</button>
-          <button>Prix (haut-bas)</button>
-          <button>Nom (A-Z)</button>
-          <button>Nom (Z-A)</button>
+          <button class="selected" onclick="orderByPriceLowerToHighest()">Prix (bas-haut)</button>
+          <button onclick="orderByPriceHighestToLower()">Prix (haut-bas)</button>
+          <button onclick="orderByAlphabetically()">Nom (A-Z)</button>
+          <button onclick="orderByAlphabeticallyInverse()">Nom (Z-A)</button>
         </div>
       </section>
     </section>
     <article>
-      <span class="right-header" id="products-count">13 produits</span>
+      <span class="right-header" id="products-count"></span>
       <h1>Produits</h1>
       <div class="products" id="products-list">
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Manette Xbox 360</h2>
-            <img alt="Manette Xbox 360" src="./assets/img/xbox-controller.png">
-            <p class="price"><small>Prix</small> 29,99&thinsp;$</p>
-          </a>
-        </div>
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Moniteur 19"</h2>
-            <img alt="Moniteur 19&quot;" src="./assets/img/monitor.png">
-            <p class="price"><small>Prix</small> 149,99&thinsp;$</p>
-          </a>
-        </div>
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Console Wii</h2>
-            <img alt="Console Wii" src="./assets/img/wii.png">
-            <p class="price"><small>Prix</small> 199,99&thinsp;$</p>
-          </a>
-        </div>
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Apple TV</h2>
-            <img alt="Apple TV" src="./assets/img/apple-tv.png">
-            <p class="price"><small>Prix</small> 249,99&thinsp;$</p>
-          </a>
-        </div>
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Canon PowerShot SD1300</h2>
-            <img alt="Canon PowerShot SD1300" src="./assets/img/camera-3.png">
-            <p class="price"><small>Prix</small> 299,99&thinsp;$</p>
-          </a>
-        </div>
-        <div class="product">
-          <a href="./product.html" title="En savoir plus...">
-            <h2>Console PS3</h2>
-            <img alt="Console PS3" src="./assets/img/ps3.png">
-            <p class="price"><small>Prix</small> 349,99&thinsp;$</p>
-          </a>
-        </div>
       </div>
     </article>
   </main>
