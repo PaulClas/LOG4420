@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <link rel="shortcut icon" src="./assets/img/favicon.ico">
   <meta charset="UTF-8">
   <title>OnlineShop - Commande</title>
+  <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./assets/js/jquery.validate.min.js"></script>
+  <script type="text/javascript" src="./assets/js/additional-methods.min.js"></script>
+  <script type="text/javascript" src="./assets/js/messages_fr.js"></script>
+  <script src="./assets/scripts/Controllers/cartNotification.js" type="module"></script>
+  <script src="./assets/scripts/Controllers/order.js" type="module"></script>
   <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
@@ -26,7 +33,7 @@
                 <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
                 <i class="fa fa-shopping-cart fa-stack-1x"></i>
               </span>
-              <span class="count">3</span>
+              <span class="count"></span>
             </a>
           </li>
         </ul>
@@ -36,7 +43,7 @@
   <main>
     <article>
       <h1>Commande</h1>
-      <form action="./confirmation.html" method="post">
+      <form action="./confirmation.html" method="post" id="order-form">
         <section>
           <h2>Contact</h2>
           <div class="row">
@@ -90,7 +97,7 @@
     </article>
   </main>
   <footer>
-    <p>Par Antoine Béland et Konstantinos Lambrou-Latreille</p>
+    <p>Équipe 210 - Myriam Kiriakos 1888929 et Paul Clas 1846912</p>
   </footer>
 </body>
 </html>
