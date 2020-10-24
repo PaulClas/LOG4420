@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="shortcut icon" src="./assets/img/favicon.ico">
+  <meta charset="UTF-8">
+  <title>OnlineShop - Panier</title>
+  <script type="text/javascript" src="./assets/js/jquery-3.2.1.min.js"></script>
+  <script src="./assets/scripts/Controllers/shoppingCart.js" type="module"></script>
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="./index.html">
+          <img alt="logo" src="./assets/img/logo.svg" title="Accueil">
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="./index.html">Accueil</a></li>
+          <li><a href="./products.html">Produits</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li>
+            <a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                <i class="fa fa-shopping-cart fa-stack-1x"></i>
+              </span>
+              <span class="count"></span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <article>
+      <h1>Panier</h1>
+      <div id="shopping-cart-page">
+        <table class="table shopping-cart-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Produit</th>
+              <th>Prix unitaire</th>
+              <th>Quantité</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody id="shopping-cart-content">
+            <tr>
+              <td><button title="Supprimer"><i class="fa fa-times"></i></button></td>
+              <td><a href="./product.html" id="product-name"></a></td>
+              <td id="product-price"></td>
+              <td>
+                <div class="row">
+                  <div class="col">
+                    <button title="Retirer" disabled=""><i class="fa fa-minus"></i></button>
+                  </div>
+                  <div class="col" id="product-quantity"></div>
+                  <div class="col">
+                    <button title="Ajouter"><i class="fa fa-plus"></i></button>
+                  </div>
+                </div>
+              </td>
+              <td class="price"></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="shopping-cart-total" id="total-amount")></strong></p>
+        <a class="btn pull-right" href="./order.html">Commander <i class="fa fa-angle-double-right"></i></a>
+        <button class="btn" id="remove-all-items-button"><i class="fa fa-trash" aria-hidden="true"></i> </i>&nbsp; Vider le panier</button>
+      </div>
+    </article>
+  </main>
+  <footer>
+    <p>Équipe 210 - Myriam Kiriakos 1888929 et Paul Clas 1846912</p>
+  </footer>
+</body>
+</html>
