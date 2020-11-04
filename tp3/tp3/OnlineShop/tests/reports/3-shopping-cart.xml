@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="3-shopping-cart"
+    errors="1" failures="0" hostname="" id="" package="3-shopping-cart" skipped="6"
+    tests="0" time="0.000" timestamp="">
+  
+
+  
+    <system-err>
+        Error: An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;
+       at endReadableNT (_stream_readable.js:1244:12)
+       at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;
+       at endReadableNT (_stream_readable.js:1244:12)
+       at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;
+       at endReadableNT (_stream_readable.js:1244:12)
+       at processTicksAndRejections (internal/process/task_queues.js:80:21)
+  Error: An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;
+       at endReadableNT (_stream_readable.js:1244:12)
+       at processTicksAndRejections (internal/process/task_queues.js:80:21)
+    </system-err>
+  
+
+    
+    <error message="An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;"><![CDATA[
+      Error: An error occurred while retrieving a new session: &#34;The driver is not executable: /Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/./tests/bin/chromedriver.exe&#34;
+    at Selenium2Protocol.handleSessionCreateError (/Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/node_modules/nightwatch/lib/transport/transport.js:103:15)
+    at HttpRequest.&lt;anonymous&gt; (/Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/node_modules/nightwatch/lib/transport/transport.js:159:32)
+    at HttpRequest.emit (events.js:314:20)
+    at HttpResponse.&lt;anonymous&gt; (/Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/node_modules/nightwatch/lib/http/request.js:142:19)
+    at HttpResponse.emit (events.js:314:20)
+    at IncomingMessage.&lt;anonymous&gt; (/Users/paulclas/Github/Automne 2020/LOG4420/tp3/tp3/OnlineShop/node_modules/nightwatch/lib/http/response.js:60:14)
+    at IncomingMessage.emit (events.js:326:22)
+    at endReadableNT (_stream_readable.js:1244:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+      ]]></error>  
+
+  
+    
+    <testcase
+      name="Aucun produit dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Un ou plusieurs produits dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Suppression d&#39;un item dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Augmentation de la quantite associee a un item dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Diminution de la quantite associee a un item dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Suppression de tous les produits dans le panier" classname="3-shopping-cart">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
