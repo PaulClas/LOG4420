@@ -60,12 +60,12 @@
     </article>
   </main>
   <%- include('../templates/footer')-%>
-
-  <script type="module">
-    import { initShoppingCartController } from "./assets/scripts/shopping-cart.controller.js";
-    import { initOrderController } from "./assets/scripts/order.controller.js"
-    initShoppingCartController();
-    initOrderController();
-  </script>
+  <%- include('../templates/scripts/scripts')-%>
+  <%- include('../templates/scripts/order')-%>
+  <script type="text/javascript"> src="./assets/js/jquery.validate.min.js"</script>
+  <script type="text/javascript"> src="./assets/js/additional-methods.min.js"</script>
+  <script type="text/javascript"> src="./assets/js/messages_fr.js"</script>
+  <script type="module"> src="./assets/scripts/orders.service.js"</script>
+  <script type="module"> src="./assets/scripts/order.controller.js"</script>
 </body>
 </html>
