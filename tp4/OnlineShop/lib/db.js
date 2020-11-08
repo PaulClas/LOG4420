@@ -1,6 +1,7 @@
 "use strict";
 
 const mongoose = require("mongoose");
+const Products = require("../tests/e2e/1-products");
 const Schema = mongoose.Schema;
 
 const Order = new Schema({
@@ -24,7 +25,7 @@ const Product = new Schema({
 }, { versionKey: false });
 
 mongoose.model("Order", Order);
-mongoose.model("Product", Product);
+export var produit = mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
@@ -39,3 +40,7 @@ mongoose.connect(url).then(() =>{
 .catch(err =>{
   throw err;
 });
+
+async function findProducts(category, criteria){
+  return await produit.find(category ? {name: category}: {}).sort(criteria);
+}
