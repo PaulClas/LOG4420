@@ -18,8 +18,8 @@ router.get("/api/products", async(req,res)=>{
 
         res.json(query).status(statut.OK);
     }
-    catch(error){
-        res.status(error.statut).send(error.what);
+    catch(err){
+        res.status(err.statut).send(err.what);
     }
 });
 
@@ -38,7 +38,7 @@ function findCategory(category){
     }
 }
 
-function findCriteria(criteria){
+function findCriteria(criteria,res){
     switch(criteria)
     {
         case null:
@@ -52,41 +52,34 @@ function findCriteria(criteria){
         case "prix-dsc":
             return;
 
-        default: console.log("Erreur dans la catégorie");
+        default: console.log("Bad request");
     }
 }
 
-router.get("/api/products:id", async(req,res)=>{});
 
-router.post("/api/products", async(req, res)=>{});
+router.get("/api/products:id", async(req,res)=>{
+    try{
+
+    }
+    catch(err){
+
+    }
+});
+
+router.post("/api/products", async(req, res)=>{
+    try{
+
+    }
+    catch(err){
+        
+    }
+});
 
 router.delete("/api/products/:id", async (req, res)=>{});
 
 router.delete("/api/products/", async (req, res)=>{});
 
-/*Panier */
-router.get("/api/shopping-cart", async (req,res)=>{});
 
-router.get("/api/shopping-cart/:productId", async(req,res)=>{});
 
-router.post("/api/shopping-cart", async (req,res)=>{});
-
-router.put("/api/shopping-cart:productId", async(req,res)=>{});
-
-router.delete("/api/shopping-cart/:productId", async (req,res)=>{});
-
-router.delete("/api/shopping-cart", async (req, res)=>{});
-
-/*Commande*/
-
-router.get("/api/orders", async(req,res)=>{});
-
-router.get("/api/orders/:id", async (req,res) =>{});
-
-router.post("/api/orders"), async(req,res)=>{};
-
-router.delete("/api/orders/;id", async (req,res) =>{});
-
-router.delete("/api/orders/", async(req,res)=>{});
 
 

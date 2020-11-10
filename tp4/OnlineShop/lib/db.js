@@ -25,7 +25,7 @@ const Product = new Schema({
 }, { versionKey: false });
 
 mongoose.model("Order", Order);
-export var produit = mongoose.model("Product", Product);
+var produit = mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
@@ -35,7 +35,7 @@ mongoose.Promise = global.Promise;
 const url = "mongodb+srv://log4420:tp4@cluster0.sxbbj.mongodb.net/TP4?retryWrites=true&w=majority";
 
 mongoose.connect(url).then(() =>{
-  console.log("Ca à marché Myriam !");
+  console.log("Ca à marché Myriam, la db est connecté!");
 })
 .catch(err =>{
   throw err;
@@ -44,3 +44,8 @@ mongoose.connect(url).then(() =>{
 async function findProducts(category, criteria){
   return await produit.find(category ? {name: category}: {}).sort(criteria);
 }
+
+async function findProduct(id){
+  return await produit.find({id: id});
+}
+
