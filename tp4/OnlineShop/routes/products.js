@@ -12,7 +12,9 @@ router.get("/api/products", async(req,res)=>{
         const criteria= req.body.criteria;
 
         findCategory(category);
-        findCriteria(criteria);
+        const functionCriteria = findCriteria(criteria);
+
+        db.findProducts(category, functionCriteria);
 
         const query= await db.produit.find(category,criteria);
 
@@ -38,19 +40,35 @@ function findCategory(category){
     }
 }
 
-function findCriteria(criteria,res){
+function findCriteria(criteria){
     switch(criteria)
     {
         case null:
         case undefined:
-        case "alpha-asc":
-            return {}
-        case "alpha-dsc":
-            return {}
         case "prix-asc":
-            return {}
+            return (a, b) => {a.price - b.price };
+        case "alpha-asc":
+            return (a, b) => {
+                if (a.name.toUpperCase() < b.name.toUpperCase()) {
+                  return -1;
+                }
+                if (a.name.toUpperCase() >  b.name.toUpperCase()) {
+                  return 1;
+                }
+                return 0;
+            }
+        case "alpha-dsc":
+            return (a, b) => {
+            if (a.name.toUpperCase() > b.name.toUpperCase()) {
+                return -1;
+              }
+              if (a.name.toUpperCase() <  b.name.toUpperCase()) {
+                return 1;
+              }
+              return 0;
+            }
         case "prix-dsc":
-            return;
+            return (a, b) => {b.price - a.price };
 
         default: console.log("Bad request");
     }
@@ -80,6 +98,7 @@ router.delete("/api/products/:id", async (req, res)=>{});
 router.delete("/api/products/", async (req, res)=>{});
 
 
+module.exports = router;
 
 
 

@@ -7,6 +7,9 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 require("./lib/db");
+const order = require("./routes/order");
+const shoppingCart = require("./routes/shopping-cart");
+const product = require("./routes/products");
 const index = require("./routes/index");
 
 const app = express();

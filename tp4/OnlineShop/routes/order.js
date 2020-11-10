@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../lib/db");
-const statut = require("http-status-codes");
+// const statut = require("http-status-codes");
 
 /*Commande*/
 
@@ -35,3 +35,5 @@ router.post("/api/orders"), async(req,res)=>{
 router.delete("/api/orders/;id", async (req,res) =>{});
 
 router.delete("/api/orders/", async(req,res)=>{});
+
+module.exports = router;

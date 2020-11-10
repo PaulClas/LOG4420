@@ -44,3 +44,5 @@ router.put("/api/shopping-cart:productId", async(req,res)=>{
 router.delete("/api/shopping-cart/:productId", async (req,res)=>{});
 
 router.delete("/api/shopping-cart", async (req, res)=>{});
+
+module.exports = router;
