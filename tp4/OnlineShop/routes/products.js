@@ -11,13 +11,14 @@ router.get("/", async(req,res)=>{
         const category= req.query.category;
         const criteria= req.query.criteria;
 
-        console.dir(category);
-        console.dir(criteria);
         const functionCriteria = findCriteria(criteria);
-
         const query = db.findProducts(category, functionCriteria);
-
-        res.json(query).status(statut.OK);
+        query.then((products)=>{
+            res.json(products).status(statut.StatusCodes.OK);
+        }
+        
+    );
+        
         console.dir(query);
 
     }
@@ -26,21 +27,6 @@ router.get("/", async(req,res)=>{
         res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 });
-
-function findCategory(category){
-    switch(category)
-    {
-        case null:
-        case undefined:
-        case "cameras":
-        case "computers":
-        case "consoles":
-        case "screens":
-            return;
-
-        default: console.log("Erreur dans la catégorie");
-    }
-}
 
 function findCriteria(criteria){
     switch(criteria)
@@ -77,12 +63,14 @@ function findCriteria(criteria){
 }
 
 
-router.get("/:id", async(req,res)=>{
+router.get("/:id", async(req,res)=>
+{
     try{
-
+        res.json(db.findProduct(req.params.id)).status(statut.StatusCodes.OK)
     }
     catch(err){
-
+        console.dir(err);
+        res.status(statut.StatusCodes.NOT_FOUND).send(err.what);
     }
 });
 

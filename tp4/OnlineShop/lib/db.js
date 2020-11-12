@@ -70,8 +70,8 @@ function validateCriteria(criteria) {
 }
 
 async function findProduct(id){
-  return await produit.find({id: id});
+  return await produit.find({"id" : id});
 }
 
-module.exports = {findProducts};
+module.exports = {findProducts, findProduct};
 
