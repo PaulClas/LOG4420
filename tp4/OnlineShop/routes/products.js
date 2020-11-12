@@ -10,14 +10,14 @@ router.get("/", async(req,res)=>{
     try{ 
         const category= req.query.category;
         const criteria= req.query.criteria;
-        console.dir(criteria);
-
-        const query = db.findProducts(category, criteria);
-        query.then((products)=>{
-            res.json(products).status(statut.StatusCodes.OK);
-        }
         
-    );
+        db.findProducts(category, criteria).then((product) =>{
+            res.json(product).status(statut.StatusCodes.OK);
+        });
+        
+        
+        
+    
 
     }
     catch(err){

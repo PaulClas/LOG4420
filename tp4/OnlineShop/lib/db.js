@@ -48,12 +48,12 @@ async function findProducts(category, criteria){
 
 
   if(category !== undefined && category !== null){
-    console.dir(findCriteria(criteria));
-    return await produit.find({"category": category}).sort((criteria));
+    console.dir();
+    return produit.find({"category": category}).sort(findCriteria(criteria)).exec();
   } else {
     
     console.dir(findCriteria(criteria));
-    return await produit.find({}).sort((criteria));
+    return produit.find({}).sort(findCriteria(criteria)).exec();
   }
   
 }
@@ -77,13 +77,13 @@ function findCriteria(criteria){
       case null:
       case undefined:
       case "price-asc":
-          return {"price":1};
+          return "price";
       case "alpha-asc":
-          return {"name":1};
+          return "name";
       case "alpha-dsc":
-          return {"name":-1};
+          return "-name";
       case "price-dsc":
-          return {"price": -1};
+          return "-price";
 
       default: throw new Error("criteria is not valid");
   }
