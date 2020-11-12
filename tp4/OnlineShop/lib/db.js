@@ -45,6 +45,8 @@ async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
 
+  console.dir(produit);
+
   if(category !== undefined && category !== null){
     return await produit.find({"category": category}).sort(criteria);
   } else {
@@ -71,5 +73,5 @@ async function findProduct(id){
   return await produit.find({id: id});
 }
 
-module.exports = this;
+module.exports = {findProducts};
 

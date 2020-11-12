@@ -7,23 +7,22 @@ const statut = require("http-status-codes");
 
 /*Produits */
 router.get("/", async(req,res)=>{
-    console.dir("hello");
     try{ 
         const category= req.query.category;
         const criteria= req.query.criteria;
 
-        // findCategory(category);
+        console.dir(category);
+        console.dir(criteria);
         const functionCriteria = findCriteria(criteria);
 
-        db.findProducts(category, functionCriteria);
-
-        const query= await db.produit.find(category,criteria);
+        const query = db.findProducts(category, functionCriteria);
 
         res.json(query).status(statut.OK);
         console.dir(query);
 
     }
     catch(err){
+        console.dir(err);
         res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 });
