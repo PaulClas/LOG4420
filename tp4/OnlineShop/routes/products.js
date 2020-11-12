@@ -10,57 +10,20 @@ router.get("/", async(req,res)=>{
     try{ 
         const category= req.query.category;
         const criteria= req.query.criteria;
+        console.dir(criteria);
 
-        const functionCriteria = findCriteria(criteria);
-        const query = db.findProducts(category, functionCriteria);
+        const query = db.findProducts(category, criteria);
         query.then((products)=>{
             res.json(products).status(statut.StatusCodes.OK);
         }
         
     );
-        
-        console.dir(query);
 
     }
     catch(err){
-        console.dir(err);
         res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 });
-
-function findCriteria(criteria){
-    switch(criteria)
-    {
-        case null:
-        case undefined:
-        case "prix-asc":
-            return (a, b) => {a.price - b.price };
-        case "alpha-asc":
-            return (a, b) => {
-                if (a.name.toUpperCase() < b.name.toUpperCase()) {
-                  return -1;
-                }
-                if (a.name.toUpperCase() >  b.name.toUpperCase()) {
-                  return 1;
-                }
-                return 0;
-            }
-        case "alpha-dsc":
-            return (a, b) => {
-            if (a.name.toUpperCase() > b.name.toUpperCase()) {
-                return -1;
-              }
-              if (a.name.toUpperCase() <  b.name.toUpperCase()) {
-                return 1;
-              }
-              return 0;
-            }
-        case "prix-dsc":
-            return (a, b) => {b.price - a.price };
-
-        default: console.log("Bad request");
-    }
-}
 
 
 router.get("/:id", async(req,res)=>

@@ -45,30 +45,49 @@ async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
 
-  console.dir(produit);
+
 
   if(category !== undefined && category !== null){
-    return await produit.find({"category": category}).sort(criteria);
+    console.dir(findCriteria(criteria));
+    return await produit.find({"category": category}).sort((criteria));
   } else {
-    return await produit.find({}).sort(criteria);
+    
+    console.dir(findCriteria(criteria));
+    return await produit.find({}).sort((criteria));
   }
   
 }
 
 function validateCategory(category) {
-  var possibleCategories = ["cameras", "computers", "consoles", "screens", undefined, null];
+  const possibleCategories = ["cameras", "computers", "consoles", "screens", undefined, null];
   if (!possibleCategories.includes(category)) {
     throw new Error("category is not valid");
   }
 }
 
 function validateCriteria(criteria) {
-  var possibleCriterias = ["alpha-asc", "alpha-dsc", "prix-asc", "prix-dsc", undefined, null];
+  const possibleCriterias = ['alpha-asc','alpha-dsc','price-asc','price-dsc',undefined,null];
   if (!possibleCriterias.includes(criteria)) {
     throw new Error("criteria is not valid");
   }
 }
+function findCriteria(criteria){
+  switch(criteria)
+  {
+      case null:
+      case undefined:
+      case "price-asc":
+          return {"price":1};
+      case "alpha-asc":
+          return {"name":1};
+      case "alpha-dsc":
+          return {"name":-1};
+      case "price-dsc":
+          return {"price": -1};
 
+      default: throw new Error("criteria is not valid");
+  }
+}
 async function findProduct(id){
   return await produit.find({"id" : id});
 }
