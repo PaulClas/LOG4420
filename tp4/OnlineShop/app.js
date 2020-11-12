@@ -37,8 +37,11 @@ app.use(session({
     cookie: {secure: false}
 }));
 
-app.use("/", index);
 
+app.use("/api/products", product);
+app.use("/api/orders", order);
+app.use("/api/shopping-cart", shoppingCart);
+app.use("/", index);
 /**
  * @typedef {Error & {status?: number}} ErrWithStatus
  */

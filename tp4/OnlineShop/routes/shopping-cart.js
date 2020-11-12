@@ -5,7 +5,7 @@ const db = require("../lib/db");
 const statut = require("http-status-codes");
 
 /*Panier */
-router.get("/api/shopping-cart", async (req,res)=>{
+router.get("/", async (req,res)=>{
     try{
 
     }
@@ -14,7 +14,7 @@ router.get("/api/shopping-cart", async (req,res)=>{
     }
 });
 
-router.get("/api/shopping-cart/:productId", async(req,res)=>{
+router.get("/:productId", async(req,res)=>{
     try{
 
     }
@@ -23,7 +23,7 @@ router.get("/api/shopping-cart/:productId", async(req,res)=>{
     }
 });
 
-router.post("/api/shopping-cart", async (req,res)=>{
+router.post("/", async (req,res)=>{
     try{
 
     }
@@ -32,7 +32,7 @@ router.post("/api/shopping-cart", async (req,res)=>{
     }
 });
 
-router.put("/api/shopping-cart:productId", async(req,res)=>{
+router.put("/:productId", async(req,res)=>{
     try{
 
     }
@@ -41,8 +41,8 @@ router.put("/api/shopping-cart:productId", async(req,res)=>{
     }
 });
 
-router.delete("/api/shopping-cart/:productId", async (req,res)=>{});
+router.delete("/:productId", async (req,res)=>{});
 
-router.delete("/api/shopping-cart", async (req, res)=>{});
+router.delete("/", async (req, res)=>{});
 
 module.exports = router;

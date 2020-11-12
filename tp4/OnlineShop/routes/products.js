@@ -6,12 +6,13 @@ const statut = require("http-status-codes");
 //const { router } = require("../app");
 
 /*Produits */
-router.get("/api/products", async(req,res)=>{
+router.get("/", async(req,res)=>{
+    console.dir("hello");
     try{ 
-        const category= req.body.category;
-        const criteria= req.body.criteria;
+        const category= req.query.category;
+        const criteria= req.query.criteria;
 
-        findCategory(category);
+        // findCategory(category);
         const functionCriteria = findCriteria(criteria);
 
         db.findProducts(category, functionCriteria);
@@ -19,9 +20,11 @@ router.get("/api/products", async(req,res)=>{
         const query= await db.produit.find(category,criteria);
 
         res.json(query).status(statut.OK);
+        console.dir(query);
+
     }
     catch(err){
-        res.status(err.statut).send(err.what);
+        res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 });
 
@@ -75,7 +78,7 @@ function findCriteria(criteria){
 }
 
 
-router.get("/api/products:id", async(req,res)=>{
+router.get("/:id", async(req,res)=>{
     try{
 
     }
@@ -84,7 +87,7 @@ router.get("/api/products:id", async(req,res)=>{
     }
 });
 
-router.post("/api/products", async(req, res)=>{
+router.post("/", async(req, res)=>{
     try{
 
     }
@@ -93,9 +96,11 @@ router.post("/api/products", async(req, res)=>{
     }
 });
 
-router.delete("/api/products/:id", async (req, res)=>{});
+router.delete("/:id", async (req, res)=>{
 
-router.delete("/api/products/", async (req, res)=>{});
+});
+
+router.delete("/", async (req, res)=>{});
 
 
 module.exports = router;
