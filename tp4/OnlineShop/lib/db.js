@@ -61,8 +61,12 @@ mongoose.connect(url).then(() =>{
   throw err;
 });
 
-
-
+function deleteProduct(id){
+  produit.deleteOne({"id":id});
+}
+function deleteEverything(){
+  produit.deleteMany({});
+}
 async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
@@ -128,5 +132,5 @@ function createProduct(body)
 }
 
 
-module.exports = {findProducts, findProduct, createProduct};
+module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything };
 

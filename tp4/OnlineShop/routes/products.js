@@ -45,10 +45,23 @@ router.post("/", async(req, res)=>{
 });
 
 router.delete("/:id", async (req, res)=>{
+    try
+    {
+        db.deleteProduct(req.params.id);
+        res.json().status(statut.StatusCodes.NO_CONTENT);
+    }
+    catch(err)
+    {
+
+        res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
+    }
 
 });
 
-router.delete("/", async (req, res)=>{});
+router.delete("/", async (req, res)=>{
+    db.deleteEverything();
+    res.json().status(statut.StatusCodes.NO_CONTENT);
+});
 
 
 module.exports = router;
