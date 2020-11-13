@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../lib/db");
 const statut = require("http-status-codes");
+const { query } = require("express");
 
 
 /*Commande*/
@@ -33,23 +34,24 @@ router.post("/", async(req,res)=>{
         
             const order = await db.getOrderById(req.body.id);
             if(order){
-                throw new Error("svp marche 3");
+                throw new Error("order existe deja");
             }
-            req.body.products.forEach(element => {
-                if(!(db.findProduct(element.id)))
+            for(let i = 0; i< req.body.products.length; i++){
+                
+                let toto = (db.findProduct(req.body.products[i].id));
+                if( ( (await toto).length === 0))
                 {
-                    throw new Error("svp marche 2");
+                    throw new Error("produit nexiste pas");
                 }
-            });
+            }
+
             await db.createOrder(req.body);
-            console.dir("haha");
             
             res.json().status(statut.StatusCodes.CREATED);
             
         }
         catch(err){
-            console.dir("coucou");
-            console.dir(err);
+            console.dir(err.what);
             res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
         }
     
@@ -57,13 +59,22 @@ router.post("/", async(req,res)=>{
 
 
 router.delete("/:id", async (req,res) =>{
-    try{
+        const hello = await db.deleteOrder(req.params.id).then((value)=>{
+            if(value.ok === 1) {
+                    
+                console.dir(value);
+                res.status(statut.StatusCodes.NO_CONTENT);
+            } 
+            
+        res.status(statut.StatusCodes.NOT_FOUND);
+        }).catch((err)=>{
+            
+        console.dir(err.what);
+        res.status(statut.StatusCodes.NOT_FOUND).send(err.what);
+        })
+        // console.dir(hello);
 
-    }
-    catch(err){
-        
-        // res.status(statut.StatusCodes.NOT_FOUND).send(err.what);
-    }
+
 });
 
 router.delete("/", async(req,res)=>{

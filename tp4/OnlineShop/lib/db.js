@@ -81,17 +81,26 @@ mongoose.connect(url).then(() =>{
 });
 
 async function getOrder() {
-  return commande.find({});
+  return await commande.find({});
 
 }
 
 async function getOrderById(id){
-  return commande.findOne({"id":id});
+  return await commande.findOne({"id":id});
 }
 
 
-function deleteProduct(id){
-  produit.deleteOne({"id":id});
+async function deleteProduct(id){
+  return await produit.deleteOne({"id":id});
+}
+
+async function deleteOrder(id){
+  
+  console.dir(commande.length);
+  const o = await commande.deleteOne({"id":id});
+  console.dir(commande.length);
+  return  o;
+ 
 }
 
 function deleteEverything(){
@@ -142,7 +151,7 @@ function findCriteria(criteria){
   }
 }
 async function findProduct(id){
-  return await produit.find({"id" : id});
+  return await produit.find({"id" : id}).exec();
 }
 
 function createProduct(body) 
@@ -159,7 +168,7 @@ function createProduct(body)
   }, (err)=>{
     if(err){
       
-      throw new Error("svp marche");
+      throw new Error("validator merdique");
 
     }
   });
@@ -170,21 +179,37 @@ function createProduct(body)
  */
 async function createOrder(body) 
 {
-  const rip = new commande(body);
-  const hehe = await rip.save(function(err, qqch) {
 
-  if(err)
-  {
-    console.dir("yoyo");
-    console.dir(err);
-    throw new Error(err);
+  validateString(body.firstName, "firstname");
+  validateString(body.lastName, "lastname");
+  validatePhone(body.phone);
+  validateEmail(body.email);
+  await commande.create(body, function(err, qqch) {
+    
+    if(err)
+    {
+      console.dir("yoyo");
+      console.dir(err);
+      throw new Error(err);
+    }
+  });
+
+}
+function validatePhone(phone){
+  if(! /\d{3}-\d{3}-\d{4}/.test(phone)){
+    throw new Error(phone +" doesnt respect reg ex for phone");
   }
-  return qqch;
-});
+}
 
+function validateEmail(email){
+  if(!/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email)){
+    throw new Error(email +" doesnt respect reg ex for phone");
   }
 
+}
+function validateString(str, name){
+  if(str.length === 0) throw new Error(str + "must have at least a char for "+ name);
+}
 
-
-module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById, createOrder };
+module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById, createOrder, deleteOrder };
 
