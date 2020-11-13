@@ -41,25 +41,17 @@ router.post("/", async(req,res)=>{
                     throw new Error("svp marche 2");
                 }
             });
-            try
-            {
-                await db.createOrder(req.body);
-            }
-            catch(err)
-            {
-                
-            console.dir("coucou");
-            res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
-            }
-            res.json().status(statut.StatusCodes.OK);
+            await db.createOrder(req.body);
+            console.dir("haha");
+            
+            res.json().status(statut.StatusCodes.CREATED);
             
         }
         catch(err){
             console.dir("coucou");
+            console.dir(err);
             res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
         }
-    
-    
     
 });
 

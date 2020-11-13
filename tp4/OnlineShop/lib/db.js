@@ -168,24 +168,23 @@ function createProduct(body)
 /**
  * @param {{ id: any; firstName: any; lastName: any; email: any; phone: any; products: any; }} body
  */
-function createOrder(body) 
+async function createOrder(body) 
 {
-  return commande.create({
-    "id": body.id,
-  "firstName": body.firstName,
-  "lastName": body.lastName,
-  "email": body.email,
-  "phone": body.phone,
-  "products": body.products
-  }, (err)=>{
-    if(err){
-      console.dir("yoyo");
-      throw new Error("svp marche");
-      console.dir(err);
-    }
-  });
+  const rip = new commande(body);
+  const hehe = await rip.save(function(err, qqch) {
 
-}
+  if(err)
+  {
+    console.dir("yoyo");
+    console.dir(err);
+    throw new Error(err);
+  }
+  return qqch;
+});
+
+  }
+
+
 
 module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById, createOrder };
 
