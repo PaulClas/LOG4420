@@ -44,8 +44,8 @@ const Product = new Schema({
 }}
 }, { versionKey: false });
 
-mongoose.model("Order", Order);
-var produit = mongoose.model("Product", Product);
+const commande = mongoose.model("Order", Order);
+const produit = mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
@@ -61,6 +61,9 @@ mongoose.connect(url).then(() =>{
   throw err;
 });
 
+async function getOrder() {
+
+}
 function deleteProduct(id){
   produit.deleteOne({"id":id});
 }

@@ -7,6 +7,7 @@ const statut = require("http-status-codes");
 /*Panier */
 router.get("/", async (req,res)=>{
     try{
+        
 
     }
     catch(err){
@@ -41,8 +42,12 @@ router.put("/:productId", async(req,res)=>{
     }
 });
 
-router.delete("/:productId", async (req,res)=>{});
+router.delete("/:productId", async (req,res)=>{
 
-router.delete("/", async (req, res)=>{});
+});
+
+router.delete("/", async (req, res)=>{
+
+});
 
 module.exports = router;

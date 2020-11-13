@@ -5,7 +5,7 @@ const db = require("../lib/db");
 
 /*Commande*/
 
-router.get("/api/orders", async(req,res)=>{
+router.get("/", async(req,res)=>{
     try{
 
     }
@@ -14,7 +14,7 @@ router.get("/api/orders", async(req,res)=>{
     }
 });
 
-router.get("/api/orders/:id", async (req,res) =>{
+router.get("/:id", async (req,res) =>{
     try{
 
     }
@@ -23,7 +23,7 @@ router.get("/api/orders/:id", async (req,res) =>{
     }
 });
 
-router.post("/api/orders"), async(req,res)=>{
+router.post("/"), async(req,res)=>{
     try{
 
     }
@@ -32,8 +32,12 @@ router.post("/api/orders"), async(req,res)=>{
     }
 };
 
-router.delete("/api/orders/;id", async (req,res) =>{});
+router.delete("/:id", async (req,res) =>{
 
-router.delete("/api/orders/", async(req,res)=>{});
+});
+
+router.delete("/", async(req,res)=>{
+
+});
 
 module.exports = router;
