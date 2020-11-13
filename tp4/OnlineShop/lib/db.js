@@ -5,8 +5,14 @@ const Products = require("../tests/e2e/1-products");
 const Schema = mongoose.Schema;
 
 const Order = new Schema({
-  id: { type: Number, unique: true },
-  firstName: String,
+  id: { type: Number, 
+    unique: true, 
+    min:0, 
+    validate : {
+    validator : Number.isInteger,
+    message   : '{VALUE} is not an integer value'
+  } },
+  firstName: {type: String},
   lastName: String,
   email: String,
   phone: String,
@@ -15,13 +21,27 @@ const Order = new Schema({
 
 
 const Product = new Schema({
-  id: { type: Number, unique: true },
-  name: String,
-  price: Number,
-  image: String,
-  category: String,
-  description: String,
-  features: Array
+  id: { type: Number, unique: true, min:0, 
+    validate : {
+    validator : Number.isInteger,
+    message   : '{VALUE} is not an integer value'
+  }  },
+  name: {type: String, minlength: 1},
+  price: {type: Number, min: 0},
+  image: {type:String,minlength:1},
+  category: {type:String, enum:['cameras', 'computers', 'consoles', 'screens']},
+  description: {type: String, minlength:1},
+  features: {type:Array, validate: {
+    validator: function (v) { 
+      v.forEach(element => {
+        if(element.length === 0) {
+          return false;
+        }
+      });
+      return v && v.length > 0; 
+    },
+    message: 'The features isnt okay'
+}}
 }, { versionKey: false });
 
 mongoose.model("Order", Order);
@@ -41,6 +61,8 @@ mongoose.connect(url).then(() =>{
   throw err;
 });
 
+
+
 async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
@@ -48,11 +70,9 @@ async function findProducts(category, criteria){
 
 
   if(category !== undefined && category !== null){
-    console.dir();
     return produit.find({"category": category}).sort(findCriteria(criteria)).exec();
   } else {
     
-    console.dir(findCriteria(criteria));
     return produit.find({}).sort(findCriteria(criteria)).exec();
   }
   
@@ -92,5 +112,21 @@ async function findProduct(id){
   return await produit.find({"id" : id});
 }
 
-module.exports = {findProducts, findProduct};
+function createProduct(body) 
+{
+
+  produit.create({
+    "id": body.id,
+  "name": body.name,
+  "price": body.price,
+  "image": body.image,
+  "category": body.category,
+  "description": body.description,
+  "features": body.features
+  });
+
+}
+
+
+module.exports = {findProducts, findProduct, createProduct};
 

@@ -15,10 +15,6 @@ router.get("/", async(req,res)=>{
             res.json(product).status(statut.StatusCodes.OK);
         });
         
-        
-        
-    
-
     }
     catch(err){
         res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
@@ -39,10 +35,12 @@ router.get("/:id", async(req,res)=>
 
 router.post("/", async(req, res)=>{
     try{
-
+        db.createProduct(req.body);
+        res.json().status(statut.StatusCodes.CREATED);
     }
     catch(err){
         
+        res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 });
 
