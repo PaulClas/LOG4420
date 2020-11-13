@@ -62,6 +62,7 @@ mongoose.connect(url).then(() =>{
 });
 
 async function getOrder() {
+  return commande.find({});
 
 }
 function deleteProduct(id){
@@ -73,7 +74,6 @@ function deleteEverything(){
 async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
-
 
 
   if(category !== undefined && category !== null){
@@ -135,5 +135,5 @@ function createProduct(body)
 }
 
 
-module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything };
+module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder };
 
