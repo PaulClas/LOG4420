@@ -12,11 +12,30 @@ const Order = new Schema({
     validator : Number.isInteger,
     message   : '{VALUE} is not an integer value'
   } },
-  firstName: {type: String},
-  lastName: String,
-  email: String,
-  phone: String,
-  products: Array
+  firstName: {type: String, minlength: 1},
+  lastName: {type: String, minlength: 1},
+  email: {type: String, validate: {
+    validator: function (email) {
+      var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+      return emailRegex.test(email);},
+      message:'The e-mail field cannot be empty.'
+   }},
+  phone: {type:String, validate:{validator: function(v) {
+    return /\d{3}-\d{3}-\d{4}/.test(v);
+  },
+  message: props => `this is not a valid phone number!`
+}},
+  products: {type: Array, validate: {
+    validator: function (v) { 
+      v.forEach(element => {
+        if(!Number.isInteger(element.id) || !Number.isInteger(element.quantity) || element.quantity > 0) {
+          return false;
+        }
+      });
+      return v && v.length > 0; 
+    },
+    message: 'The products isnt okay'
+}}, 
 }, { versionKey: false });
 
 
@@ -74,9 +93,11 @@ async function getOrderById(id){
 function deleteProduct(id){
   produit.deleteOne({"id":id});
 }
+
 function deleteEverything(){
   produit.deleteMany({});
 }
+
 async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
@@ -127,7 +148,7 @@ async function findProduct(id){
 function createProduct(body) 
 {
 
-  produit.create({
+  return produit.create({
     "id": body.id,
   "name": body.name,
   "price": body.price,
@@ -135,10 +156,36 @@ function createProduct(body)
   "category": body.category,
   "description": body.description,
   "features": body.features
+  }, (err)=>{
+    if(err){
+      
+      throw new Error("svp marche");
+
+    }
+  });
+
+}
+/**
+ * @param {{ id: any; firstName: any; lastName: any; email: any; phone: any; products: any; }} body
+ */
+function createOrder(body) 
+{
+  return commande.create({
+    "id": body.id,
+  "firstName": body.firstName,
+  "lastName": body.lastName,
+  "email": body.email,
+  "phone": body.phone,
+  "products": body.products
+  }, (err)=>{
+    if(err){
+      console.dir("yoyo");
+      throw new Error("svp marche");
+      console.dir(err);
+    }
   });
 
 }
 
-
-module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById };
+module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById, createOrder };
 

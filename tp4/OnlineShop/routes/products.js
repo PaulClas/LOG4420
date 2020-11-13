@@ -11,9 +11,8 @@ router.get("/", async(req,res)=>{
         const category= req.query.category;
         const criteria= req.query.criteria;
         
-        db.findProducts(category, criteria).then((product) =>{
-            res.json(product).status(statut.StatusCodes.OK);
-        });
+       const prod =  await db.findProducts(category, criteria);
+       res.json(prod).status(statut.StatusCodes.OK);
         
     }
     catch(err){
@@ -28,17 +27,15 @@ router.get("/:id", async(req,res)=>
         res.json(db.findProduct(req.params.id)).status(statut.StatusCodes.OK)
     }
     catch(err){
-        console.dir(err);
+        
         res.status(statut.StatusCodes.NOT_FOUND).send(err.what);
     }
 });
 
 router.post("/", async(req, res)=>{
     
-    console.dir("coucou");
-    console.log("dgjhksg");
     try{
-        db.createProduct(req.body);
+        await db.createProduct(req.body);
         res.json().status(statut.StatusCodes.CREATED);
     }
     catch(err){
@@ -50,19 +47,18 @@ router.post("/", async(req, res)=>{
 router.delete("/:id", async (req, res)=>{
     try
     {
-        db.deleteProduct(req.params.id);
+        await db.deleteProduct(req.params.id);
         res.json().status(statut.StatusCodes.NO_CONTENT);
     }
     catch(err)
     {
-
         res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
     }
 
 });
 
 router.delete("/", async (req, res)=>{
-    db.deleteEverything();
+    await db.deleteEverything();
     res.json().status(statut.StatusCodes.NO_CONTENT);
 });
 
