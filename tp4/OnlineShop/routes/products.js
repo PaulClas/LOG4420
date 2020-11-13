@@ -34,6 +34,9 @@ router.get("/:id", async(req,res)=>
 });
 
 router.post("/", async(req, res)=>{
+    
+    console.dir("coucou");
+    console.log("dgjhksg");
     try{
         db.createProduct(req.body);
         res.json().status(statut.StatusCodes.CREATED);

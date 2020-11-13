@@ -65,6 +65,12 @@ async function getOrder() {
   return commande.find({});
 
 }
+
+async function getOrderById(id){
+  return commande.findOne({"id":id});
+}
+
+
 function deleteProduct(id){
   produit.deleteOne({"id":id});
 }
@@ -75,11 +81,10 @@ async function findProducts(category, criteria){
   validateCategory(category);
   validateCriteria(criteria);
 
-
   if(category !== undefined && category !== null){
+
     return produit.find({"category": category}).sort(findCriteria(criteria)).exec();
   } else {
-    
     return produit.find({}).sort(findCriteria(criteria)).exec();
   }
   
@@ -93,7 +98,7 @@ function validateCategory(category) {
 }
 
 function validateCriteria(criteria) {
-  const possibleCriterias = ['alpha-asc','alpha-dsc','price-asc','price-dsc',undefined,null];
+  const possibleCriterias = ['alpha-asc','alpha-dsc','price-asc', 'price-dsc', undefined, null];
   if (!possibleCriterias.includes(criteria)) {
     throw new Error("criteria is not valid");
   }
@@ -106,13 +111,13 @@ function findCriteria(criteria){
       case "price-asc":
           return "price";
       case "alpha-asc":
-          return "name";
+          return { name: 'asc' };
       case "alpha-dsc":
-          return "-name";
+          return { name: 'dsc' };
       case "price-dsc":
           return "-price";
-
-      default: throw new Error("criteria is not valid");
+      default: 
+        throw new Error("criteria is not valid");
   }
 }
 async function findProduct(id){
@@ -135,5 +140,5 @@ function createProduct(body)
 }
 
 
-module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder };
+module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById };
 
