@@ -134,6 +134,17 @@ function validateCriteria(criteria) {
     throw new Error("criteria is not valid");
   }
 }
+function validateFeatures(v) { 
+  v.forEach(element => {
+    if(element.length === 0) {
+      throw new Error("feature error");
+    }
+  });
+  if (!(v && v.length > 0)){
+    
+    throw new Error("feature error");
+  } 
+}
 function findCriteria(criteria){
   switch(criteria)
   {
@@ -157,16 +168,16 @@ async function findProduct(id){
 
 function createProduct(body) 
 {
+  validateString(body.name, "name");
+  validateString(body.image, "image");
+  validateString(body.description, "description");
+  validateCategory(body.category);
+  validateCriteria(body.criteria);
+  validateFeatures(body.features);
 
-  return produit.create({
-    "id": body.id,
-  "name": body.name,
-  "price": body.price,
-  "image": body.image,
-  "category": body.category,
-  "description": body.description,
-  "features": body.features
-  }, (err)=>{
+  validatePrice(body.price);
+
+  return produit.create(body, (err)=>{
     if(err){
       
       throw new Error("validator merdique");
@@ -183,6 +194,7 @@ async function createOrder(body)
 
   validateString(body.firstName, "firstname");
   validateString(body.lastName, "lastname");
+  
   validatePhone(body.phone);
   validateEmail(body.email);
   await commande.create(body, function(err, qqch) {
@@ -193,6 +205,11 @@ async function createOrder(body)
     }
   });
 
+}
+function validatePrice(price){
+  console.dir(price);
+  if(isNaN(price) ||price < 0)
+  throw new Error("price not ok");
 }
 function validatePhone(phone){
   if(! /\d{3}-\d{3}-\d{4}/.test(phone)){
