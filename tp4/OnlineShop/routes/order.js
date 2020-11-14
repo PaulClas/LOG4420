@@ -38,8 +38,13 @@ router.post("/", async(req,res)=>{
             if(order){
                 throw new Error("order existe deja");
             }
-            
 
+            for(let i = 0; i<req.body.products.length; i++){
+                let p = await db.findProduct(req.body.products[i].id);
+                if(p === null){
+                    res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
+                }
+            }
             await db.createOrder(req.body);
             
             res.json().status(statut.StatusCodes.CREATED);
@@ -73,7 +78,6 @@ router.delete("/", async(req,res)=>{
 
     await db.deleteEverythingOrder().then((err, result) => {
         if (err) {
-          console.dir(err);
         } else {
           res.send(result).status(statut.StatusCodes.NO_CONTENT);
         }

@@ -48,7 +48,7 @@ const Product = new Schema({
     message   : '{VALUE} is not an integer value'
   }  },
   name: {type: String, minlength: 1},
-  price: {type: Number, min: 0},
+  price: {type: Number},
   image: {type:String,minlength:1},
   category: {type:String, enum:['cameras', 'computers', 'consoles', 'screens']},
   description: {type: String, minlength:1},
@@ -93,7 +93,7 @@ async function getOrderById(id){
 
 
 async function deleteProduct(id){
-  return await produit.findOneAndRemove({"id":id});
+  return await produit.deleteOne({"id":id});
 }
 
 async function deleteOrder(id){
@@ -176,7 +176,6 @@ function createProduct(body)
   validateFeatures(body.features);
 
   validatePrice(body.price);
-
   return produit.create(body, (err)=>{
     if(err){
       
@@ -198,7 +197,6 @@ async function createOrder(body)
   validatePhone(body.phone);
   validateEmail(body.email);
   await commande.create(body, function(err, qqch) {
-    console.dir(qqch);
     if(err)
     {
       throw new Error(err);
@@ -207,9 +205,16 @@ async function createOrder(body)
 
 }
 function validatePrice(price){
-  console.dir(price);
-  if(isNaN(price) ||price < 0)
+  
+  if(isNaN(price) ||price < 0){
+    
+  console.dir("im here");
   throw new Error("price not ok");
+  }
+}
+
+function validateListProduct(listProd){
+
 }
 function validatePhone(phone){
   if(! /\d{3}-\d{3}-\d{4}/.test(phone)){

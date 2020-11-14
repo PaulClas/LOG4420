@@ -25,6 +25,7 @@ router.get("/:id", async(req,res)=>
 {
     try{
         await db.findProduct(req.params.id).then((order) =>{
+            
             if(order !== null){
                 res.json(order).status(statut.StatusCodes.OK);
             }else {
@@ -60,18 +61,21 @@ router.post("/", async(req, res)=>{
 router.delete("/:id", async (req, res)=>{
     try
     {
-        await db.deleteProduct(req.params.id);
-        res.json().status(statut.StatusCodes.NO_CONTENT);
-    }
-    catch(err)
-    {
-        res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
-    }
+        const deletedAns = await db.deleteProduct(req.params.id);
+        if(deletedAns.deletedCount>0){
+            res.json().status(statut.StatusCodes.NO_CONTENT);
+        } else{
+            
+        res.json().status(statut.StatusCodes.NOT_FOUND);
+        }
+} catch(err){
+    res.status(statut.StatusCodes.NOT_FOUND);
+}
 
 });
 
 router.delete("/", async (req, res)=>{
-    await db.deleteEverything();
+    await db.deleteEverythingProduct();
     res.json().status(statut.StatusCodes.NO_CONTENT);
 });
 
