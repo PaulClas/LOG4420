@@ -116,9 +116,6 @@ async function findProducts(category, criteria){
 
     return await produit.find({"category": category}).collation({locale: "en" }).sort(findCriteria(criteria));
   } else {
-    console.dir(findCriteria(criteria));
-    produit.find({}).count((err, c) =>
-    {console.log(c);});
     return await produit.find({}).collation({locale: "en" }).sort(findCriteria(criteria));
   }
   
@@ -155,7 +152,7 @@ function findCriteria(criteria){
   }
 }
 async function findProduct(id){
-  return await produit.find({"id" : id}).exec();
+  return await produit.findOne({"id" : id});
 }
 
 function createProduct(body) 

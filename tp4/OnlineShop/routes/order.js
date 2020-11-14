@@ -16,8 +16,10 @@ router.get("/", async(req,res)=>
 
 router.get("/:id", async (req,res) =>{
     try{
-        db.getOrderById(req.params.id).then((order) =>{
-            if(order !== null){
+        db.getOrderById(req.params.id).then((order) =>
+        {
+            if(order !== null)
+            {
                 res.json(order).status(statut.StatusCodes.OK);
             }else {
                 res.status(statut.StatusCodes.NOT_FOUND).send("order is null");
@@ -36,14 +38,7 @@ router.post("/", async(req,res)=>{
             if(order){
                 throw new Error("order existe deja");
             }
-            for(let i = 0; i< req.body.products.length; i++){
-                
-                let toto = (db.findProduct(req.body.products[i].id));
-                if( ( (await toto).length === 0))
-                {
-                    throw new Error("produit nexiste pas");
-                }
-            }
+            
 
             await db.createOrder(req.body);
             
