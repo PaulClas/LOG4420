@@ -59,26 +59,35 @@ router.post("/", async(req,res)=>{
 
 
 router.delete("/:id", async (req,res) =>{
-        const hello = await db.deleteOrder(req.params.id).then((value)=>{
-            if(value.ok === 1) {
-                    
-                console.dir(value);
-                res.status(statut.StatusCodes.NO_CONTENT);
-            } 
-            
+    try{
+        console.dir(req.params.id);
+        const allo = await db.deleteOrder(req.params.id);
+            if(allo.deletedCount>0){
+                console.dir("dit avoir delete")
+                res.json().status(statut.StatusCodes.NO_CONTENT);
+            } else{
+                
+            res.json().status(statut.StatusCodes.NOT_FOUND);
+            }
+    } catch(err){
+        console.dir(err);
         res.status(statut.StatusCodes.NOT_FOUND);
-        }).catch((err)=>{
+    }
             
-        console.dir(err.what);
-        res.status(statut.StatusCodes.NOT_FOUND).send(err.what);
-        })
-        // console.dir(hello);
 
 
 });
 
 router.delete("/", async(req,res)=>{
 
+    await db.deleteEverythingOrder().then((err, result) => {
+        if (err) {
+          console.dir(err);
+        } else {
+          res.send(result).status(statut.StatusCodes.NO_CONTENT);
+        }
+      
+    });
 });
 
 module.exports = router;

@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const Products = require("../tests/e2e/1-products");
 const Schema = mongoose.Schema;
 
+const statut = require("http-status-codes");
+
 const Order = new Schema({
   id: { type: Number, 
     unique: true, 
@@ -91,20 +93,19 @@ async function getOrderById(id){
 
 
 async function deleteProduct(id){
-  return await produit.deleteOne({"id":id});
+  return await produit.findOneAndRemove({"id":id});
 }
 
 async function deleteOrder(id){
-  
-  console.dir(commande.length);
-  const o = await commande.deleteOne({"id":id});
-  console.dir(commande.length);
-  return  o;
+  return await commande.deleteOne({"id": id});
  
 }
 
-function deleteEverything(){
-  produit.deleteMany({});
+async function deleteEverythingOrder(){
+  await commande.deleteMany({});
+}
+async function deleteEverythingProduct(){
+  await produit.deleteMany({});
 }
 
 async function findProducts(category, criteria){
@@ -211,5 +212,5 @@ function validateString(str, name){
   if(str.length === 0) throw new Error(str + "must have at least a char for "+ name);
 }
 
-module.exports = { findProducts, findProduct, createProduct, deleteProduct, deleteEverything, getOrder, getOrderById, createOrder, deleteOrder };
+module.exports = { findProducts, findProduct, createProduct, deleteProduct,deleteEverythingProduct, deleteEverythingOrder, getOrder, getOrderById, createOrder, deleteOrder };
 
