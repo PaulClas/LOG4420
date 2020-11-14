@@ -86,7 +86,6 @@ async function findProducts(category, criteria){
 }
 
 function validateCategory(category) {
-  console.dir("category val");
   const possibleCategories = ["cameras", "computers", "consoles", "screens", undefined, null];
   if (!possibleCategories.includes(category)) {
     throw new Error("category is not valid");
@@ -94,14 +93,12 @@ function validateCategory(category) {
 }
 
 function validateCriteria(criteria) {
-  console.dir("criteria val")
   const possibleCriterias = ['alpha-asc','alpha-dsc','price-asc', 'price-dsc', undefined, null];
   if (!possibleCriterias.includes(criteria)) {
     throw new Error("criteria is not valid");
   }
 }
 function validateFeatures(v) { 
-  console.dir("feature val");
   v.forEach(element => {
     if(element.length === 0) {
       throw new Error("feature error");
@@ -172,7 +169,6 @@ async function createOrder(body)
 
 }
 function validatePrice(price){
-  console.dir("price val");
   if(isNaN(price) || price < 0){
   throw new Error("price not ok");
   }
@@ -180,21 +176,19 @@ function validatePrice(price){
 
 
 function validatePhone(phone){
-  console.dir("phone val");
   if(! /\d{3}-\d{3}-\d{4}/.test(phone)){
     throw new Error(phone +" doesnt respect reg ex for phone");
   }
 }
 
 function validateEmail(email){
-  console.dir("email val");
   if(!/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email)){
     throw new Error(email +" doesnt respect reg ex for phone");
   }
 
 }
 function validateString(str, name){
-  console.dir(name+" val")
+  
   if(str.length === 0) throw new Error(str + "must have at least a char for "+ name);
 }
 

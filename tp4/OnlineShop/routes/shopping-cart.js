@@ -6,8 +6,6 @@ const statut = require("http-status-codes");
 
 /*Panier */
 router.get("/", async (req,res)=>{
-    try{    
-        let sess = req.session;
         if(req.session.cart){
             
         res.json(req.session.cart).status(statut.StatusCodes.OK);
@@ -16,11 +14,6 @@ router.get("/", async (req,res)=>{
         res.json([]).status(statut.StatusCodes.OK);
         }
 
-    
-    }
-    catch(err){
-        console.dir("hello");
-    }
 });
 
 router.get("/:productId", async(req,res)=>{
@@ -30,29 +23,22 @@ router.get("/:productId", async(req,res)=>{
         let hasFound = false;
         for(let i = 0; i < req.session.cart.length; i++)
         {
-            
-            console.dir(req.session.cart[i].productId);
-            console.dir("entre");
-            console.dir(req.params.productId);
             if(String(req.session.cart[i].productId) === String(req.params.productId)){
                 hasFound = true;
                 res.json(req.session.cart[i]).status(statut.StatusCodes.OK);
             }
         }
         if(!hasFound){
-            console.dir("not found get 1");
         res.json().status(statut.StatusCodes.NOT_FOUND);
         }
     }
     catch(err){
-        console.dir("not found get 2");
         res.json().status(statut.StatusCodes.NOT_FOUND);   
     }
 });
 
 router.post("/", async (req,res)=>{
     try{
-        console.dir("jarrive ici");
         if(isNaN(req.body.quantity) || req.body.quantity < 1){
             
             res.status(statut.StatusCodes.BAD_REQUEST).json("quantity not ok");
@@ -86,7 +72,6 @@ router.put("/:productId", async(req,res)=>{
 
         if(req.session.cart){
             for(let i = 0; i < req.session.cart.length; i++){
-                console.dir(req.session.cart[i].productId);
                 if(String(req.session.cart[i].productId) === String(req.params.productId)){
                     req.session.cart[i].quantity = req.body.quantity;
                     hasFound = true;
@@ -97,7 +82,6 @@ router.put("/:productId", async(req,res)=>{
 
         }
         if(!hasFound){
-            console.dir("not found put");
             res.json().status(statut.StatusCodes.NOT_FOUND);
         }
     }
@@ -111,8 +95,6 @@ router.delete("/:productId", async (req,res)=>{
         let hasFound = false;
         if(req.session.cart){
             for(let i = 0; i < req.session.cart.length; i++){
-                console.dir(req.session.cart[i].productId);
-                console.dir(req.params.productId);
 
                 if(String(req.session.cart[i].productId) === String(req.params.productId)){
                     req.session.cart.splice(i, 1);
@@ -121,7 +103,6 @@ router.delete("/:productId", async (req,res)=>{
                 }
             }
             if(!hasFound){
-                console.dir("not found delete");
                 res.json().status(statut.StatusCodes.NOT_FOUND);
             }
         }
