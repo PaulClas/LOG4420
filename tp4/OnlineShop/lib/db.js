@@ -10,60 +10,24 @@ const Order = new Schema({
   id: { type: Number, 
     unique: true, 
     min:0, 
-    validate : {
-    validator : Number.isInteger,
-    message   : '{VALUE} is not an integer value'
-  } },
-  firstName: {type: String, minlength: 1},
-  lastName: {type: String, minlength: 1},
-  email: {type: String, validate: {
-    validator: function (email) {
-      var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-      return emailRegex.test(email);},
-      message:'The e-mail field cannot be empty.'
-   }},
-  phone: {type:String, validate:{validator: function(v) {
-    return /\d{3}-\d{3}-\d{4}/.test(v);
-  },
-  message: props => `this is not a valid phone number!`
-}},
-  products: {type: Array, validate: {
-    validator: function (v) { 
-      v.forEach(element => {
-        if(!Number.isInteger(element.id) || !Number.isInteger(element.quantity) || element.quantity > 0) {
-          return false;
-        }
-      });
-      return v && v.length > 0; 
     },
-    message: 'The products isnt okay'
-}}, 
+  firstName: {type: String},
+  lastName: {type: String},
+  email: {type: String},
+  phone: {type:String },
+  products: {type: Array}, 
 }, { versionKey: false });
 
 
 const Product = new Schema({
-  id: { type: Number, unique: true, min:0, 
-    validate : {
-    validator : Number.isInteger,
-    message   : '{VALUE} is not an integer value'
-  }  },
-  name: {type: String, minlength: 1},
+  id: { type: Number, unique: true },
+  name: {type: String},
   price: {type: Number},
-  image: {type:String,minlength:1},
-  category: {type:String, enum:['cameras', 'computers', 'consoles', 'screens']},
-  description: {type: String, minlength:1},
-  features: {type:Array, validate: {
-    validator: function (v) { 
-      v.forEach(element => {
-        if(element.length === 0) {
-          return false;
-        }
-      });
-      return v && v.length > 0; 
-    },
-    message: 'The features isnt okay'
-}}
-}, { versionKey: false });
+  image: {type:String},
+  category: {type:String},
+  description: {type: String},
+  features: {type:Array},
+    }, { versionKey: false });
 
 const commande = mongoose.model("Order", Order);
 const produit = mongoose.model("Product", Product);
@@ -206,16 +170,14 @@ async function createOrder(body)
 }
 function validatePrice(price){
   
-  if(isNaN(price) ||price < 0){
+  if(isNaN(price) || price < 0){
     
   console.dir("im here");
   throw new Error("price not ok");
   }
 }
 
-function validateListProduct(listProd){
 
-}
 function validatePhone(phone){
   if(! /\d{3}-\d{3}-\d{4}/.test(phone)){
     throw new Error(phone +" doesnt respect reg ex for phone");

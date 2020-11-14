@@ -7,6 +7,7 @@ const statut = require("http-status-codes");
 /*Panier */
 router.get("/", async (req,res)=>{
     try{
+        console.dir(req.session);
 
     }
     catch(err){
@@ -16,7 +17,7 @@ router.get("/", async (req,res)=>{
 
 router.get("/:productId", async(req,res)=>{
     try{
-
+        console.dir(req);
     }
     catch(err){
         
@@ -25,7 +26,7 @@ router.get("/:productId", async(req,res)=>{
 
 router.post("/", async (req,res)=>{
     try{
-
+        console.dir(req.body);
     }
     catch(err){
         
