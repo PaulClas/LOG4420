@@ -114,9 +114,12 @@ async function findProducts(category, criteria){
 
   if(category !== undefined && category !== null){
 
-    return produit.find({"category": category}).sort(findCriteria(criteria)).exec();
+    return await produit.find({"category": category}).collation({locale: "en" }).sort(findCriteria(criteria));
   } else {
-    return produit.find({}).sort(findCriteria(criteria)).exec();
+    console.dir(findCriteria(criteria));
+    produit.find({}).count((err, c) =>
+    {console.log(c);});
+    return await produit.find({}).collation({locale: "en" }).sort(findCriteria(criteria));
   }
   
 }
@@ -142,9 +145,9 @@ function findCriteria(criteria){
       case "price-asc":
           return "price";
       case "alpha-asc":
-          return { name: 'asc' };
+          return { name : 1};
       case "alpha-dsc":
-          return { name: 'dsc' };
+          return { name : -1};
       case "price-dsc":
           return "-price";
       default: 
@@ -186,11 +189,9 @@ async function createOrder(body)
   validatePhone(body.phone);
   validateEmail(body.email);
   await commande.create(body, function(err, qqch) {
-    
+    console.dir(qqch);
     if(err)
     {
-      console.dir("yoyo");
-      console.dir(err);
       throw new Error(err);
     }
   });

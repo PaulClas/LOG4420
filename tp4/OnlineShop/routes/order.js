@@ -51,7 +51,6 @@ router.post("/", async(req,res)=>{
             
         }
         catch(err){
-            console.dir(err.what);
             res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
         }
     
@@ -60,17 +59,14 @@ router.post("/", async(req,res)=>{
 
 router.delete("/:id", async (req,res) =>{
     try{
-        console.dir(req.params.id);
         const allo = await db.deleteOrder(req.params.id);
             if(allo.deletedCount>0){
-                console.dir("dit avoir delete")
                 res.json().status(statut.StatusCodes.NO_CONTENT);
             } else{
                 
             res.json().status(statut.StatusCodes.NOT_FOUND);
             }
     } catch(err){
-        console.dir(err);
         res.status(statut.StatusCodes.NOT_FOUND);
     }
             
