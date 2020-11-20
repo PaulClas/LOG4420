@@ -9,7 +9,6 @@ router.get("/", async (req,res)=>{
         if(req.session.cart){
         res.json(req.session.cart).status(statut.StatusCodes.OK);
         } else{
-            console.dir("panier vide");
         res.json([]).status(statut.StatusCodes.OK);
         }
 

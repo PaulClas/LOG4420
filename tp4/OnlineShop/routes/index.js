@@ -37,7 +37,6 @@ router.get("/panier", async (req, res) => {
             if(prod)
             {
                 const totalPrice = Number(prod.price)*Number(cart[i].quantity);
-                console.dir(totalPrice);
                 products.push({name: prod.name, quantity: cart[i].quantity, price: prod.price, totalPrice: (totalPrice) });
                 total+= Number(totalPrice);
             }

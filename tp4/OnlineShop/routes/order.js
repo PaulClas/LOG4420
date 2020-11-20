@@ -41,10 +41,8 @@ router.post("/", async(req,res)=>{
             }
 
             for(let i = 0; i<req.body.products.length; i++){
-                console.dir(req.body.products[i].id);
                 let p = await db.findProduct(req.body.products[i].id);
                 if(p === null){
-                    console.dir("ici");
                     res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
                 }
             }
@@ -57,7 +55,6 @@ router.post("/", async(req,res)=>{
             
         }
         catch(err){
-            console.dir(err);
             res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
         }
     
