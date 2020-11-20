@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 router.get(["/", "/accueil"], (req, res) => {
-    res.render("../views/pages/index", {title: "Accueil"});
+    res.render("../views/pages/index", {title: "Accueil", cart: req.session.cart});
 });
 
 router.get("/produits", (req, res) => {
-    res.render("../views/pages/products", {title: "Produits"});
+    res.render("../views/pages/products", {title: "Produits", produits: req.session.cart});
 });
 
 router.get("/produits/:id", (req, res) => {
