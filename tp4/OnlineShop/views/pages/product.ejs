@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <%- include('../templates/head', {title: title, num: num})-%>
+  <%- include('../templates/head', {title: title})-%>
 <body>
-  <%- include('../templates/header')-%>
+  <%- include('../templates/header', {num: num})-%>
   <main>
     <article>
       <h1 id="product-name">Produit</h1>
       <div class="row">
         <div class="col">
-          <img alt="product" src="<%= produit.img %>" id="product-image">
+          <img alt="product" src="/assets/img/<%= product.image %>" id="product-image">
         </div>
         <div class="col">
           <section>
             <h2>Description</h2>
             <p id="product-desc">
-              {{produit.description}}
+              <%= product.description%>
             </p>
           </section>
           <section>
             <h2>Caractéristiques</h2>
             <ul id="product-features">
-              <% for(var i = 0; i < produit.features.length; i++) { %>
-                <li><%= produit.features[i] %></li>
+              <% for(var i = 0; i < product.features.length; i++) { %>
+                <li><%= product.features[i] %></li>
                 <% } %>
         
             </ul>
@@ -34,12 +34,12 @@
               <i class="fa fa-cart-plus"></i>&nbsp; Ajouter
             </button>
           </form>
-          <p>Prix: <strong id="product-price"></strong></p>
+          <p>Prix: <strong id="product-price"><%= product.price%></strong></p>
         </div>
       </div>
-      <div class="dialog" id="dialog">
+      <!--<div class="dialog" id="dialog">
         Le produit a été ajouté au panier.
-      </div>
+      </div>-->
     </article>
   </main>
   <%- include('../templates/footer')-%>
