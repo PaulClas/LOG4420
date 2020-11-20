@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require("../lib/db");
 const statut = require("http-status-codes");
 const { query } = require("express");
+const session = require("express-session");
 
 
 /*Commande*/
@@ -46,7 +47,8 @@ router.post("/", async(req,res)=>{
                 }
             }
             await db.createOrder(req.body);
-            
+            req.session.orderId = req.body.id;
+            req.session.name = req.body.firstName + " " + req.body.lastName;
             res.json().status(statut.StatusCodes.CREATED);
             
         }

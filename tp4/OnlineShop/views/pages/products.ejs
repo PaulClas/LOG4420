@@ -29,7 +29,7 @@
       <span class="right-header" id="products-count"><%= products.length %> produits</span>
       <h1>Produits</h1>
       <div class="products" id="products-list">
-        <!--<div class="loading"></div>-->
+        <div class="loading"></div>
         <% products.forEach(function(product){ %>
           <%- include('../templates/article', {product:product})-%>
         <% }); %>
@@ -40,7 +40,7 @@
   <%- include('../templates/scripts/scripts')-%>
   <%- include('../templates/scripts/order')-%>
   <script type="module">
-    import { initProductControler } from "./assets/scripts/products.controller.js";
+    import { initProductControler } from "/assets/scripts/products.controller.js";
     initProductControler();
   </script>
 </body>

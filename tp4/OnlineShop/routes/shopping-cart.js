@@ -38,28 +38,27 @@ router.get("/:productId", async(req,res)=>{
 });
 
 router.post("/", async (req,res)=>{
-    try{
-        if(isNaN(req.body.quantity) || req.body.quantity < 1){
+
+        if(isNaN(req.body.quantity) || Number(req.body.quantity) < 1){
             
             res.status(statut.StatusCodes.BAD_REQUEST).json("quantity not ok");
         }
-        let p = await db.findProduct(req.body.productId);
-        if(p === null){
-            
-            res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
+        db.findProduct(req.body.productId).then((err, p) =>{
+             if(p === null || err){
+                res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
         }
-
         if(!req.session.cart){
             req.session.cart = new Array();
         }
-        req.session.cart.push({productId: req.body.productId, quantity: req.body.quantity});
+        req.session.cart.push({productId: req.body.productId, quantity: req.body.quantity}); 
         res.json().status(statut.StatusCodes.CREATED);
+
+        });
+
+
         
-    }
-    catch(err){
         
-        res.status(statut.StatusCodes.BAD_REQUEST).json("erreur");
-    }
+   
 });
 
 router.put("/:productId", async(req,res)=>{
