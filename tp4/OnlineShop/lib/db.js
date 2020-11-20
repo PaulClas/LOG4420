@@ -40,7 +40,6 @@ mongoose.Promise = global.Promise;
 const url = "mongodb+srv://log4420:tp4@cluster0.sxbbj.mongodb.net/TP4?retryWrites=true&w=majority";
 
 mongoose.connect(url).then(() =>{
-  console.log("Ca à marché Myriam, la db est connecté!");
 })
 .catch(err =>{
   throw err;

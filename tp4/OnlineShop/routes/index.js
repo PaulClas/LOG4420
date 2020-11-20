@@ -29,7 +29,8 @@ router.get("/contact", (req, res) => {
 
 router.get("/panier", (req, res) => {
     const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/shopping-cart", {title: "Panier", num:num});
+
+    res.render("../views/pages/shopping-cart", {title: "Panier", num:num, cart:req.session.cart });
 });
 
 router.get("/commande", (req, res) => {
@@ -38,6 +39,8 @@ router.get("/commande", (req, res) => {
 });
 
 router.get("/confirmation", (req, res) => {
+    console.dir(req.params);
+    console.dir(req.body);
     const num = req.session.cart?req.session.cart.length:0;
     res.render("../views/pages/confirmation", {title: "Confirmation", num:num});
 });
