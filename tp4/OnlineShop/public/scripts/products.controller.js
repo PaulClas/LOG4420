@@ -41,7 +41,7 @@ function _createProductElement(product) {
     return $(`<div class="product" data-product-id="${product.id}">
         <a href="./produits/${product.id}" title="En savoir plus...">
         <h2>${product.name}</h2>
-        <img alt="product" src="./assets/img/${product.image}">
+        <img alt="product" src="/assets/img/${product.image}">
         <p class="price"><small>Prix</small> ${formatPrice(product.price)}</p>
         </a>
         </div>`);

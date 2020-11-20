@@ -16,7 +16,15 @@
                 <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
                 <i class="fa fa-shopping-cart fa-stack-1x"></i>
               </span>
-              <span class="count"><%= num%></span>
+
+              <span class="count">
+                <% if(cart){ %>
+                  cart.length
+                <% } else{ %>  
+                  0
+               <% } %>
+                
+              </span>
             </a>
           </li>
         </ul>

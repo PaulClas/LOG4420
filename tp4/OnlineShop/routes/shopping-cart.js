@@ -7,10 +7,9 @@ const statut = require("http-status-codes");
 /*Panier */
 router.get("/", async (req,res)=>{
         if(req.session.cart){
-            console.dir(req.session.cart);
         res.json(req.session.cart).status(statut.StatusCodes.OK);
         } else{
-            
+            console.dir("panier vide");
         res.json([]).status(statut.StatusCodes.OK);
         }
 
@@ -43,7 +42,6 @@ router.post("/", async (req,res)=>{
             res.status(statut.StatusCodes.BAD_REQUEST).json("quantity not ok");
         }
         let product = await db.findProduct(req.body.productId);
-        console.dir(req.body.productId);
         if(product === null)
         {
             res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
@@ -51,7 +49,8 @@ router.post("/", async (req,res)=>{
     if(!req.session.cart){
         req.session.cart = new Array();
     }
-    req.session.cart.push({productId: req.body.productId, quantity: req.body.quantity}); 
+    req.session.cart.push(req.body); 
+
     res.json().status(statut.StatusCodes.CREATED);
 } catch(err){
     

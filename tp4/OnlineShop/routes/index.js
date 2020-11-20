@@ -3,66 +3,56 @@ const router = express.Router();
 const db = require("./../lib/db")
 
 router.get(["/", "/accueil"], (req, res) => {
-    const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/index", {title: "Accueil", num:num});
+ 
+    res.render("../views/pages/index", {title: "Accueil", cart:req.session.cart});
 });
 
 router.get("/produits", (req, res) => {
+    
     db.findProducts(undefined, undefined).then((p)=>{
-        const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/products", {title: "Produits", products: p, num:num});
+    res.render("../views/pages/products", {title: "Produits", products: p, cart: req.session.cart});
     });
 });
 
 router.get("/produits/:id", (req, res) => {
+    
     db.findProduct(req.params.id).then((p) =>  {
-        const num = req.session.cart?req.session.cart.length:0;
-        res.render("../views/pages/product", {title: "Produit",product:p, num:num});
+        res.render("../views/pages/product", {title: "Produit",product:p, cart: req.session.cart});
 
     });
 });
 
 router.get("/contact", (req, res) => {
-    const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/contact", {title: "Contact", num:num});
+    
+    res.render("../views/pages/contact", {title: "Contact", cart: req.session.cart});
 });
 
-router.get("/panier", (req, res) => {
-    const num = req.session.cart?req.session.cart.length:0;
-    // productId and qte
-    // besoin Produit	Prix unitaire	Quantité	Prix TOTAL
+router.get("/panier", async (req, res) => {
     const cart = req.session.cart;
-    console.dir(cart);
     const products = [];
     let total = 0;
-    if(cart){
+    if(req.session.cart){
         for(let i=0; i<cart.length; i++){
-            db.findProduct(cart.productId).then((err, cartElement) =>  {
-                if(err) throw new Error(err);
-                if(cartElement){
-                     const totalPrice = Number(cartElement)*Number(cartElement.quantity);
-                products.push({id: cartElement.productId, quantity: cartElement.quantity, price: cartElement.price, totalPrice: totalPrice });
-                total+= totalPrice;
-                }else{
-                    console.dir(req.params.id);
-                }
-               
-            });
+            let prod = await db.findProduct(cart[i].productId);
+            if(prod)
+            {
+                const totalPrice = Number(prod.price)*Number(cart[i].quantity);
+                console.dir(totalPrice);
+                products.push({name: prod.name, quantity: cart[i].quantity, price: prod.price, totalPrice: (totalPrice) });
+                total+= Number(totalPrice);
+            }
         }
     }
-    res.render("../views/pages/shopping-cart", {title: "Panier", num:num, products: products, total: total });
+    res.render("../views/pages/shopping-cart", {title: "Panier",  products: products, total: total, cart: req.session.cart });
 });
 
 router.get("/commande", (req, res) => {
-    const num = req.session.cart?req.session.cart.length:0;
 
-    res.render("../views/pages/order", {title: "Commande", num:num});
+    res.render("../views/pages/order", {title: "Commande",  cart: req.session.cart});
 });
 
 router.get("/confirmation", (req, res) => {
-    
-    const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/confirmation", {title: "Confirmation", num:num, id: req.session.orderId, name:req.session.name});
+    res.render("../views/pages/confirmation", {title: "Confirmation", id: req.session.orderId, name:req.session.name, cart: req.session.cart});
 });
 
 
