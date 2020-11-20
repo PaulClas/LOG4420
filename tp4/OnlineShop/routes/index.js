@@ -54,6 +54,9 @@ router.get("/commande", (req, res) => {
 router.post("/confirmation", (req, res) => {
     res.render("../views/pages/confirmation", {title: "Confirmation", id: req.body.first-name, name:req.session.name, cart: req.session.cart});
 });
+router.get("/confirmation", (req, res) => {
+    res.render("../views/pages/confirmation", {title: "Confirmation", id: req.body.first-name, name:req.session.name, cart: req.session.cart});
+});
 
 
 module.exports = router;

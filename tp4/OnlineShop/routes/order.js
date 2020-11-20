@@ -48,10 +48,12 @@ router.post("/", async(req,res)=>{
                     res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
                 }
             }
+            
             await db.createOrder(req.body);
-            req.session.orderId = req.body.id;
-            req.session.name = req.body.firstName + " " + req.body.lastName;
-            res.json({}).status(statut.StatusCodes.CREATED);
+            // req.session.orderId = req.body.id;
+            // sreq.session.name = req.body.firstName + " " + req.body.lastName;
+
+            res.status(statut.StatusCodes.CREATED).json({});
             
         }
         catch(err){
