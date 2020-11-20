@@ -29,20 +29,40 @@ router.get("/contact", (req, res) => {
 
 router.get("/panier", (req, res) => {
     const num = req.session.cart?req.session.cart.length:0;
-
-    res.render("../views/pages/shopping-cart", {title: "Panier", num:num, cart:req.session.cart });
+    // productId and qte
+    // besoin Produit	Prix unitaire	Quantité	Prix TOTAL
+    const cart = req.session.cart;
+    console.dir(cart);
+    const products = [];
+    let total = 0;
+    if(cart){
+        for(let i=0; i<cart.length; i++){
+            db.findProduct(cart.productId).then((err, cartElement) =>  {
+                if(err) throw new Error(err);
+                if(cartElement){
+                     const totalPrice = Number(cartElement)*Number(cartElement.quantity);
+                products.push({id: cartElement.productId, quantity: cartElement.quantity, price: cartElement.price, totalPrice: totalPrice });
+                total+= totalPrice;
+                }else{
+                    console.dir(req.params.id);
+                }
+               
+            });
+        }
+    }
+    res.render("../views/pages/shopping-cart", {title: "Panier", num:num, products: products, total: total });
 });
 
 router.get("/commande", (req, res) => {
     const num = req.session.cart?req.session.cart.length:0;
+
     res.render("../views/pages/order", {title: "Commande", num:num});
 });
 
 router.get("/confirmation", (req, res) => {
-    console.dir(req.params);
-    console.dir(req.body);
+    
     const num = req.session.cart?req.session.cart.length:0;
-    res.render("../views/pages/confirmation", {title: "Confirmation", num:num});
+    res.render("../views/pages/confirmation", {title: "Confirmation", num:num, id: req.session.orderId, name:req.session.name});
 });
 
 

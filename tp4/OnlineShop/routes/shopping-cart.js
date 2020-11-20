@@ -7,7 +7,7 @@ const statut = require("http-status-codes");
 /*Panier */
 router.get("/", async (req,res)=>{
         if(req.session.cart){
-            
+            console.dir(req.session.cart);
         res.json(req.session.cart).status(statut.StatusCodes.OK);
         } else{
             
@@ -38,22 +38,26 @@ router.get("/:productId", async(req,res)=>{
 });
 
 router.post("/", async (req,res)=>{
-
+    try{
         if(isNaN(req.body.quantity) || Number(req.body.quantity) < 1){
-            
             res.status(statut.StatusCodes.BAD_REQUEST).json("quantity not ok");
         }
-        db.findProduct(req.body.productId).then((err, p) =>{
-             if(p === null || err){
-                res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
+        let product = await db.findProduct(req.body.productId);
+        console.dir(req.body.productId);
+        if(product === null)
+        {
+            res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
         }
-        if(!req.session.cart){
-            req.session.cart = new Array();
-        }
-        req.session.cart.push({productId: req.body.productId, quantity: req.body.quantity}); 
-        res.json().status(statut.StatusCodes.CREATED);
-
-        });
+    if(!req.session.cart){
+        req.session.cart = new Array();
+    }
+    req.session.cart.push({productId: req.body.productId, quantity: req.body.quantity}); 
+    res.json().status(statut.StatusCodes.CREATED);
+} catch(err){
+    
+            
+    res.status(statut.StatusCodes.BAD_REQUEST).json("quantity not ok");
+}
 
 
         

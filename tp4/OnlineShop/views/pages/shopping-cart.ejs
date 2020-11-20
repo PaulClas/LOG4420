@@ -18,10 +18,22 @@
             </tr>
           </thead>
           <tbody>
-            <td></td>
+            <% if(products) { %>
+            <% products.forEach(function(product){ %>
+              <tr>
+              <td> </td>
+              <td><%= product.name %></td>
+              <td><%= product.price %> </td>
+              <td><%= product.quantity %> </td>
+              <td><%= product.totalPrice %> </td>
+              </tr>
+
+            <% }); %>
+            <% } %>
+            
           </tbody>
         </table>
-        <p class="shopping-cart-total">Total: <strong id="total-amount"></strong></p>
+        <p class="shopping-cart-total">Total: <strong id="total-amount"><%= total %> </strong></p>
         <a class="btn pull-right" href="./commande">Commander <i class="fa fa-angle-double-right"></i></a>
         <button class="btn" id="remove-all-items-button"><i class="fa fa-trash-o"></i>&nbsp; Vider le panier</button>
       </div>
