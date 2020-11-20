@@ -14,14 +14,14 @@
           <section>
             <h2>Description</h2>
             <p id="product-desc">
-              <%= product.description%>
+              <%- product.description%>
             </p>
           </section>
           <section>
             <h2>Caractéristiques</h2>
             <ul id="product-features">
               <% for(var i = 0; i < product.features.length; i++) { %>
-                <li><%= product.features[i] %></li>
+                <li><%- product.features[i] %></li>
                 <% } %>
         
             </ul>
