@@ -175,14 +175,14 @@ function validatePrice(price){
 
 
 function validatePhone(phone){
-  if(! /\d{3}-\d{3}-\d{4}/.test(phone)){
+  if(! /\d{3}-\d{3}-\d{4}/.test(phone)  ){
     throw new Error(phone +" doesnt respect reg ex for phone");
   }
 }
 
 function validateEmail(email){
   if(!/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test(email)){
-    throw new Error(email +" doesnt respect reg ex for phone");
+    throw new Error(email +" doesnt respect reg ex for email");
   }
 
 }

@@ -41,18 +41,21 @@ router.post("/", async(req,res)=>{
             }
 
             for(let i = 0; i<req.body.products.length; i++){
+                console.dir(req.body.products[i].id);
                 let p = await db.findProduct(req.body.products[i].id);
                 if(p === null){
+                    console.dir("ici");
                     res.status(statut.StatusCodes.BAD_REQUEST).json("identifiant dans liste produit nexiste pas");
                 }
             }
             await db.createOrder(req.body);
             req.session.orderId = req.body.id;
             req.session.name = req.body.firstName + " " + req.body.lastName;
-            res.json().status(statut.StatusCodes.CREATED);
+            res.json({}).status(statut.StatusCodes.CREATED);
             
         }
         catch(err){
+            console.dir(err);
             res.status(statut.StatusCodes.BAD_REQUEST).send(err.what);
         }
     

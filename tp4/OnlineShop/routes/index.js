@@ -51,8 +51,8 @@ router.get("/commande", (req, res) => {
     res.render("../views/pages/order", {title: "Commande",  cart: req.session.cart});
 });
 
-router.get("/confirmation", (req, res) => {
-    res.render("../views/pages/confirmation", {title: "Confirmation", id: req.session.orderId, name:req.session.name, cart: req.session.cart});
+router.post("/confirmation", (req, res) => {
+    res.render("../views/pages/confirmation", {title: "Confirmation", id: req.body.first-name, name:req.session.name, cart: req.session.cart});
 });
 
 
