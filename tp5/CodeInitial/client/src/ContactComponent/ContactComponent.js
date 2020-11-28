@@ -2,6 +2,7 @@
 import '../css/App.css';
 import {Header} from "../_Common/Header.js"
 import {Footer} from "../_Common/Footer.js"
+import React from 'react';
 
 export function ContactComponent() {
     document.title="OnlineShop - Accueil";

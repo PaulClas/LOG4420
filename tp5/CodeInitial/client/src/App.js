@@ -8,7 +8,9 @@ import { ContactComponent } from "./ContactComponent/ContactComponent.js"
 import { PageNotFoundComponent } from "./PageNotFoundComponent.js";
 import { ProductComponent } from './ProductComponent/ProductComponent';
 import { ProductsComponent } from "./ProductsComponent/ProductsComponent";
+import { OrderComponent } from "./OrderComponent/OrderComponent";
 import { ShoppingCartComponent } from './ShoppingCartComponent/ShoppingCartComponent';
+import React from 'react';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <Switch>
         <Route exact path="/"> <HomeComponent /> </Route>
         <Route path="/confirmation"> <ConfirmationComponent /> </Route>
+        <Route path="/commande"><OrderComponent /></Route>
         <Route path="/contact"> <ContactComponent/> </Route>
         <Route path="/products"> <ProductsComponent/> </Route>
         <Route path="/product/:id"> <ProductComponent/> </Route>
