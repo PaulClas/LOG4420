@@ -61,8 +61,8 @@ export function ProductComponent() {
                         <hr/>
                         <form className="pull-right" id="add-to-cart-form">
                             <label htmlFor="product-quantity">Quantité:</label>
-                            <input className="form-control" type="number" defaultValue="1" min="1" id="product-quantity"/>
-                            <button className="btn" title="Ajouter au panier" type="submit">
+                            <input className="form-control" type="number" defaultValue="1" min="1" id="product-quantity" onChange={(event)=> onChange(event)}/>
+                            <button className="btn" title="Ajouter au panier" type="submit" onClick={(event) => submit(event)}>
                                 <i className="fa fa-cart-plus"></i>&nbsp; Ajouter
                             </button>
                         </form>
