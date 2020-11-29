@@ -59,7 +59,9 @@ export function ProductComponent() {
     async function submit(event) {
         event.preventDefault();
         let addProduct = { productId: parseInt(id), quantity: parseInt(quantity)};
-        const prod = await fetch("http://localhost:4000/api/shopping-cart", {
+        let prod;
+        try{
+            prod = await fetch("http://localhost:4000/api/shopping-cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -67,6 +69,12 @@ export function ProductComponent() {
             credentials: 'include',
             body: JSON.stringify(addProduct)
         });
+        }
+
+        catch(err){
+            prod = {ok : false};
+        }
+        
         if(prod.ok) {
             setShowDialog(true);
             setTimeout(() => { setShowDialog(false)}, 5000);

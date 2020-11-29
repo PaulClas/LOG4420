@@ -3,7 +3,7 @@ import {Header} from "../_Common/Header.js"
 import {Footer} from "../_Common/Footer.js"
 import {Link} from "react-router-dom"
 import { formatPrice } from "../utils.js"
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function OrderComponent() {
     document.title="OnlineShop - Commande";
@@ -102,7 +102,7 @@ export function OrderComponent() {
                           <div className="form-group">
                             <label htmlFor="credit-card">Numéro de carte de crédit</label>
                             <input className="form-control" type="text" id="credit-card" name="credit-card" placeholder="•••• •••• •••• ••••" onChange={e => setOrder({[e.target.name] : e.target.value})} required
-                                   pattern="(^4[0-9]{12}(?:[0-9]{3})?$)|(^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$)|(3[47][0-9]{13})|(^3(?:0[0-5]|[68][0-9])[0-9]{11}$)|(^6(?:011|5[0-9]{2})[0-9]{12}$)|(^(?:2131|1800|35\d{3})\d{11}$)"/>
+                                   />
                           </div>
                         </div>
                         <div className="col">
