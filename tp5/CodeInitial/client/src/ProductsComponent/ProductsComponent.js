@@ -1,4 +1,3 @@
-
 import '../css/App.css';
 import {Header} from "../_Common/Header.js"
 import {Footer} from "../_Common/Footer.js"
@@ -10,7 +9,31 @@ export function ProductsComponent() {
     document.title="OnlineShop - Produits";
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
-    
+    const [cartItemsLength, setCartItems] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const item = await fetch("http://localhost:4000/api/shopping-cart", {credentials: 'include' });
+                if(item.ok) {
+                    const orderItems = await item.json();
+                    let sumItems=0;
+                    let result=0;
+                    orderItems.forEach(element => {
+                        sumItems+=element.quantity;
+                        });
+                    result=sumItems;
+                    setCartItems(result);
+                } else {
+                    throw item.json();
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+        fetchData();
+    }, []);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -18,7 +41,7 @@ export function ProductsComponent() {
                 if(prod.ok) {
                     setProducts(await prod.json());
                 } else {
-                    throw await prod.json();
+                    throw prod.json();
                 }
             } catch(e) {
                 console.error(e);
@@ -56,7 +79,7 @@ export function ProductsComponent() {
 
     return (
         <div>
-            <Header currentActive="product"/>
+            <Header currentActive="product" cartCount={cartItemsLength}/>
             <main>
             <section className="sidebar" aria-label="Filtres">
             <section>
@@ -65,7 +88,7 @@ export function ProductsComponent() {
                     {categories.map(catObj => 
                         <button 
                             key={catObj.id}
-                            className={cat===catObj.id ? "active" : ""}
+                            className={cat===catObj.id ? "selected" : ""}
                             data-category={catObj.id}
                             onClick={() => setCat(catObj.id)}
                         >
@@ -80,7 +103,7 @@ export function ProductsComponent() {
                     {sorts.map(sortObj => 
                         <button 
                             key={sortObj.id}
-                            className={cat===sortObj.id ? "active" : ""}
+                            className={sort===sortObj.id ? "selected" : ""}
                             data-category={sortObj.id}
                             onClick={() => setSort(sortObj.id)}
                         >
