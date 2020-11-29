@@ -1,9 +1,9 @@
-
 import '../css/App.css';
 import {Header} from "../_Common/Header.js"
 import {Footer} from "../_Common/Footer.js"
 import {useParams} from "react-router-dom";
 import {imageMap} from "../ProductsComponent/ProductImageLoader";
+import {formatPrice } from "../utils.js"
 import { useEffect, useState } from 'react';
 
 export function ProductComponent() {
@@ -12,15 +12,41 @@ export function ProductComponent() {
 
     const [product, setProduct] = useState();
     const [loading, setLoading] = useState(true);
+    const [quantity, setQuantity] = useState(1);
+    const [dialogShowing, setShowDialog] = useState(false);
+    const [cartItemsLength, setCartItems] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const item = await fetch("http://localhost:4000/api/shopping-cart", {credentials: 'include' });
+                if(item.ok) {
+                    const orderItems = await item.json();
+                    let sumItems=0;
+                    let result=0;
+                    orderItems.forEach(element => {
+                        sumItems+=element.quantity;
+                        });
+                    result=sumItems;
+                    setCartItems(result);
+                } else {
+                    throw item.json();
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+        fetchData();
+    }, []);
     
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const prod = await fetch(`http://localhost:4000/api/products/${id}`);
+                const prod = await fetch(`http://localhost:4000/api/products/${id}`, {credentials: 'include'});
                 if(prod.ok) {
                     setProduct(await prod.json());
                 } else {
-                    throw await prod.json();
+                    throw prod.json();
                 }
             } catch(e) {
                 console.error(e);
@@ -29,6 +55,42 @@ export function ProductComponent() {
         }
         fetchData();
     }, [id]);
+
+    async function submit(event) {
+        event.preventDefault();
+        let addProduct = { productId: parseInt(id), quantity: parseInt(quantity)};
+        const prod = await fetch("http://localhost:4000/api/shopping-cart", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            credentials: 'include',
+            body: JSON.stringify(addProduct)
+        });
+        if(prod.ok) {
+            setShowDialog(true);
+            setTimeout(() => { setShowDialog(false)}, 5000);
+            setCartItems(cartItemsLength + quantity);
+        } else {
+            const productGet = await fetch(`http://localhost:4000/api/shopping-cart/${id}`, {credentials: 'include'})
+            if (productGet.ok) {
+                const existingProduct = await productGet.json();
+                const update = await fetch(`http://localhost:4000/api/shopping-cart/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    credentials: 'include',
+                    body: JSON.stringify({quantity: parseInt(quantity) + parseInt(existingProduct.quantity)})
+                });
+                if (update.ok) {
+                    setShowDialog(true);
+                    setTimeout(() => { setShowDialog(false)}, 5000);
+                    setCartItems(cartItemsLength + parseInt(quantity));
+                } 
+            }
+        }
+    };
 
     let content;
     if(loading) {
@@ -48,7 +110,7 @@ export function ProductComponent() {
                     <div className="col">
                         <section>
                             <h2>Description</h2>
-                            <p id="product-desc">{product.description}</p>
+                            <p id="product-desc" dangerouslySetInnerHTML={{__html: product.description}}></p>
                         </section>
                         <section>
                             <h2>Caractéristiques</h2>
@@ -61,15 +123,16 @@ export function ProductComponent() {
                         <hr/>
                         <form className="pull-right" id="add-to-cart-form">
                             <label htmlFor="product-quantity">Quantité:</label>
-                            <input className="form-control" type="number" defaultValue="1" min="1" id="product-quantity" onChange={(event)=> onChange(event)}/>
+                            <input className="form-control" type="number" defaultValue="1" min="1" id="product-quantity"
+                                onChange={(event) => setQuantity(event.target.value)}/>
                             <button className="btn" title="Ajouter au panier" type="submit" onClick={(event) => submit(event)}>
                                 <i className="fa fa-cart-plus"></i>&nbsp; Ajouter
                             </button>
                         </form>
-                        <p>Prix: <strong id="product-price">{product.price}</strong></p>
+                        <p>Prix: <strong id="product-price">{formatPrice(product.price)}</strong></p>
                     </div>
                 </div>
-                <div className="dialog" id="dialog">
+                <div className={dialogShowing ? "dialog fadeIn" : "dialog fadeOut"} id="dialog">
                     Le produit a été ajouté au panier.
                 </div>
             </article>
@@ -84,7 +147,7 @@ export function ProductComponent() {
     }
     return (
         <div>
-            <Header currentActive="product"/>
+            <Header currentActive="product" cartCount={cartItemsLength}/>
             <main>
                 {content}
             </main>

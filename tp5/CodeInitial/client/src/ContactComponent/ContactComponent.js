@@ -2,13 +2,38 @@
 import '../css/App.css';
 import {Header} from "../_Common/Header.js"
 import {Footer} from "../_Common/Footer.js"
+import { useState, useEffect } from 'react';
 import React from 'react';
 
 export function ContactComponent() {
     document.title="OnlineShop - Accueil";
+    const [cartItemsLength, setCartItems] = useState(0);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const item = await fetch("http://localhost:4000/api/shopping-cart", {credentials: 'include' });
+                if(item.ok) {
+                    const orderItems = await item.json();
+                    let sumItems=0;
+                    let result=0;
+                    orderItems.forEach(element => {
+                        sumItems+=element.quantity;
+                        });
+                    result=sumItems;
+                    setCartItems(result);
+                } else {
+                    throw item.json();
+                }
+            } catch(e) {
+                console.error(e);
+            }
+        }
+        fetchData();
+    }, []);
     return (
         <div>
-            <Header currentActive="contact"/>
+            <Header currentActive="contact" cartCount={cartItemsLength}/>
             <main>
                 <article>
                 <h1>Contact</h1>
