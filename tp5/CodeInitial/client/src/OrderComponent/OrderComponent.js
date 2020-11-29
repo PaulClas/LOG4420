@@ -100,13 +100,14 @@ export function OrderComponent() {
                           <div className="form-group">
                             <label htmlFor="credit-card">Numéro de carte de crédit</label>
                             <input className="form-control" type="text" id="credit-card" name="credit-card" placeholder="•••• •••• •••• ••••" onChange={e => setOrder({[e.target.name] : e.target.value})} required
-                                   />
+                                pattern="^\d{4}[ -]?\d{4}[ -]?\d{4}[ -]?\d{4}$"   />
                           </div>
                         </div>
                         <div className="col">
                           <div className="form-group">
                             <label htmlFor="credit-card-expiry">Expiration (mm/aa)</label>
                             <input className="form-control" type="text" id="credit-card-expiry" name="credit-card-expiry" placeholder="mm/aa" onChange={e => setOrder({[e.target.name] : e.target.value})} required
+
                                    pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})"/>
                           </div>
                         </div>
