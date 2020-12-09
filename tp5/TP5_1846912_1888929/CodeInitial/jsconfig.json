@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "jsx": "react",
+        "module": "commonjs",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "sourceMap": false,
+        "checkJs": true
+    },
+    "include" : [
+        "**/*.js"
+    ],
+    "exclude" : [
+        "node_modules",
+    ]
+}
